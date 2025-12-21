@@ -142,7 +142,7 @@
                         <h3>Nature</h3>                                                                                                                                                  
                         <p>Capturing the beauty of landscapes and wildlife</p>                                                                                                           
                     </div>                                                                                                                                                               
-                </div>                                                                                                                                                                   
+                </div>         
                 <div class="photo-item">                                                                                                                                                 
                     <img src="images/20250314_120521.jpg" alt="Portrait Photography">                                                                                                            
                     <div class="photo-overlay">                                                                                                                                          
@@ -279,6 +279,15 @@
             <p>© 2025 Jagdish Sahoo. All Rights Reserved <i class="fa-solid fa-heart"></i>.</p>
         </div>
     </div>
+    <div id="gallery-modal" class="modal">
+        <span class="close">&times;</span>                                                                                                                                               
+        <img class="modal-content" id="modal-img">                                                                                                                                       
+        <div class="modal-nav">                                                                                                                                                          
+            <button id="prev-btn">&#10094;</button>                                                                                                                                      
+            <button id="next-btn">&#10095;</button>                                                                                                                                      
+        </div>                                                                                                                                                                           
+        <div class="modal-caption"></div>                                                                                                                                                
+    </div> 
     <script>
         var tablinks = document.getElementsByClassName("tab-links");
         var tabcontents = document.getElementsByClassName("tab-contents");
@@ -304,6 +313,36 @@
         }
     </script>
     <script>
+        const modal = document.getElementById("gallery-modal");
+        const modalImg = document.getElementById("modal-img");                                                                                                                               
+        const photos = ["images/20241008_134134.jpg", "images/20240616_131749.jpg", "images/20250927_120223.jpg", "images/20240804_112109.jpg",
+                "images/20250314_120521.jpg", "images/20250130_114152.jpg", "images/20250226_151209(1).jpg", "images/20240215_110120.jpg",
+                "images/20241106_070848.jpg"];                                                                                                                                                    
+        let currentPhoto = 0;                                                                                                                                                                
+                                                                                                                                                                                             
+        document.querySelector("#photography .btn").onclick = function() {                                                                                                                   
+            modal.style.display = "block";                                                                                                                                                   
+            showPhoto(0);                                                                                                                                                                    
+        }                                                                                                                                                                                    
+                                                                                                                                                                                             
+        document.querySelector(".close").onclick = function() {                                                                                                                              
+            modal.style.display = "none";                                                                                                                                                    
+        }                                                                                                                                                                                    
+                                                                                                                                                                                             
+        document.getElementById("prev-btn").onclick = function() {                                                                                                                           
+            currentPhoto = (currentPhoto - 1 + photos.length) % photos.length;                                                                                                               
+            showPhoto(currentPhoto);                                                                                                                                                         
+        }                                                                                                                                                                                    
+                                                                                                                                                                                             
+        document.getElementById("next-btn").onclick = function() {                                                                                                                           
+            currentPhoto = (currentPhoto + 1) % photos.length;                                                                                                                               
+            showPhoto(currentPhoto);                                                                                                                                                         
+        }                                                                                                                                                                                    
+                                                                                                                                                                                             
+        function showPhoto(index) {                                                                                                                                                          
+            modalImg.src = photos[index];                                                                                                                                                    
+            currentPhoto = index;                                                                                                                                                            
+        }
         const scriptURL = 'https://script.google.com/macros/s/AKfycbx2J2WPrY3CFJh2td9vYh7c3IqP7hX9WvoaqC53TtLL7Gq-FczAh58H6rbcBrquQjxk/exec'
         const form = document.forms['submit-to-google-sheet']
         const msg = document.getElementById("msg")
@@ -323,6 +362,7 @@
       </script>
 </body>
 </html>
+
 
 
 
