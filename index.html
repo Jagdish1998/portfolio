@@ -1,373 +1,759 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="jagdish-icon" href="images/icon-logo.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Jagdish Sahoo</title>
+
+    <title>Jagdish Sahoo — Lead Software Engineer | Java, Spring Boot, AWS</title>
+    <meta name="description"
+        content="Lead Software Engineer with 4+ years building enterprise Java and Spring Boot microservices, React frontends and AWS cloud solutions across financial services and e-commerce.">
+    <meta name="author" content="Jagdish Sahoo">
+    <meta name="theme-color" content="#08080a">
+
+    <!-- TODO: swap these two for your live domain once deployed -->
+    <meta property="og:url" content="https://jagdish1998.github.io/portfolio/">
+    <meta property="og:image" content="https://jagdish1998.github.io/portfolio/images/opt/user-800.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jagdish Sahoo — Lead Software Engineer">
+    <meta property="og:description"
+        content="Enterprise Java and Spring Boot microservices, React frontends and AWS cloud solutions.">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/png" href="images/icon-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/5ad0b15baf.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5ad0b15baf.js" crossorigin="anonymous" async></script>
+    <script src="main.js" defer></script>
+
+    <script>
+        // Runs before first paint: flags that JS is available (so reveal animations
+        // are only armed when they can actually be triggered) and applies the saved
+        // theme up front to avoid a flash of the wrong colour scheme.
+        (function () {
+            var root = document.documentElement;
+            root.classList.add('js');
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved) {
+                    root.setAttribute('data-theme', saved);
+                } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    root.setAttribute('data-theme', 'light');
+                }
+            } catch (e) { /* storage blocked, keep the default */ }
+        })();
+    </script>
 </head>
+
 <body>
-    <div id="header">
-        <div class="container">
-            <nav>
-                <img src="images/logo.png" class="logo">
-                <ul id="sidemenu">
-                    <li><a href="#header">Home</a></li>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"><span id="scroll-bar"></span></div>
+
+    <header class="site-header" id="site-header">
+        <div class="container nav-wrap">
+            <a href="#home" class="logo-link" aria-label="Jagdish Sahoo, home">
+                <img src="images/opt/logo-mark.png" alt="Jagdish Sahoo" class="logo" width="300" height="82">
+            </a>
+
+            <nav id="primary-nav" aria-label="Primary">
+                <button class="nav-close" type="button" aria-label="Close menu">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#coding-profiles">Coding Profiles</a></li>
+                    <li><a href="#coding-profiles">Coding</a></li>
                     <li><a href="#photography">Photography</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#portfolio">Work</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <i class="fas fa-times" onclick="closemenu()"></i>
                 </ul>
-                <i class="fas fa-bars" onclick="openmenu()"></i>
             </nav>
-            <div class="header-text">
-                <p>Lead Software Engineer</p>
-                <h1>Hi, I'm <span>Jagdish</span><br>Sahoo from India</h1>
-            </div>
-        </div>
-    </div>
-    <!-- -----------about--------- -->
-    <div id="about">
-        <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <img src="images/user.png">
-                </div>
-                <div class="about-col-2">
-                    <h1 class="sub-title">About Me</h1>
-                    <p> Experienced Software Development Engineer with around 4.3 years developing enterprise Java/Spring Boot microservices, React frontends, and AWS cloud solutions using Docker, ECS, and EC2 across financial services and e-commerce platforms at Amazon and GST India.</p>
-                    <div class="tab-titles">
-                        <p class="tab-links active-link" onclick="opentab('skills')">Technical Skills</p>
-                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
-                        <p class="tab-links" onclick="opentab('education')">Education</p>
-                    </div>
-                    <div class="tab-contents active-tab" id="skills">
-                        <ul>
-                            <li><span>Programming Languages</span><br> Java, Python</li>
-                            <li><span>Technologies and Frameworks</span><br>Spring, Spring Boot, REST APIs, JPA, JWT, OAuth, Hibernate, Spring Security</li>
-                            <li><span>Cloud Technologies</span><br>AWS (EC2, ECS, IAM, VPC)</li>
-                            <li><span>IT Constructs</span><br>DS and Algo, OOPS</li>
-                            <li><span>Development Tools</span><br> Eclipse, IntelliJ, STS, VS Code, Postman</li>
-                            <li><span>Web Development</span><br>HTML5, CSS3</li>
-                            <li><span>Methodologies</span><br>Scrum, Agile</li>
-                            <li><span>DB Languages</span><br>PostgreSQL, DynamoDB, MySQL</li>
-                            <li><span>Version Control</span><br>Git/GitHub, SVN</li>
-                            <li><span>Monitoring/CI/CD Tools</span><br>Docker, Jenkins, Kafka</li>
-                            <li><span>AI Tools/Agents</span><br>Copilot, Kiro, Claude, Cursor</li>
-                        </ul>
-                    </div>
-                    <div class="tab-contents" id="experience">
-                        <ul>
-                            <li><span>June 2025 - Present</span><br>Lead Software Engineer at Persistent Systems</li>
-                            <li><span>June 2022 - June 2025</span><br>Digital Specialist Engineer - I at Infosys</li>
-                            <li><span>Apr 2021 - Apr 2022</span><br>Student Placement Coordinator at Odisha University of Technology and Research</li>
-                            <li><span>Feb 2021 - May 2021</span><br>OpenSource Contributor at GirlScript Summer of Code</li>
-                        </ul>
-                    </div>
-                    <div class="tab-contents" id="education">
-                        <ul>
-                            <li><span>2019 - 2022</span><br>MCA from Odisha University of Technology and Research</li>
-                            <li><span>2016 - 2019</span><br>BSc Chemistry from North Orissa University</li>
-                            <li><span>2014 - 2016</span><br>Intermediate from Barbil Junior College, Barbil</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- -------------------Coding Profiles------------------ -->
-    <div id="coding-profiles">
-        <div class="container">
-            <h1 class="sub-title">Coding Profiles</h1>
-            <div class="services-list">
-                <div>
-                    <i class="fa-solid fa-laptop-code"></i>
-                    <h2>LeetCode</h2>
-                    <p>Solved 1100+ algorithmic problems across data structures, dynamic programming, and system design. Achieved top 10% ranking with consistent problem-solving streak. Specialized in optimizing time complexity and implementing efficient solutions for competitive programming challenges.</p>
-                    <a href="https://leetcode.com/u/jagdish1998/" target="_blank">View Profile</a>
-                </div>
-                <div>
-                    <i class="fa-solid fa-graduation-cap"></i>
-                    <h2>GeeksForGeeks</h2>
-                    <p>Solved 380+ algorithmic problems across data structures, dynamic programming, and system design. Strong expertise in Java programming tutorials, interview preparation guides, and competitive programming solutions.</p>
-                    <a href="https://www.geeksforgeeks.org/profile/jagdish1998?tab=activity" target="_blank">View Profile</a>
-                </div>
-                <div>
-                    <i class="fa-solid fa-trophy"></i>
-                    <h2>CodeChef</h2>
-                    <p>Active competitive programmer with 3-star rating and 1400+ rating points. Participated in 50+ contests including Cook-offs and Long Challenges. Strong expertise in mathematical algorithms, graph theory, and advanced data structures with consistent top 500 rankings.</p>
-                    <a href="https://www.codechef.com/users/jagdish1998" target="_blank">View Profile</a>
-                </div>
+            <div class="nav-actions">
+                <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to light theme">
+                    <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                </button>
+                <button class="icon-btn nav-open" id="nav-open" type="button" aria-label="Open menu"
+                    aria-expanded="false" aria-controls="primary-nav">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
-    </div>
+    </header>
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
 
-    <!-- -------------------Photography------------------ -->
-    <div id="photography">                                                                                                                                                               
-        <div class="container">                                                                                                                                                          
-            <h1 class="sub-title">My Photography</h1>                                                                                                                                    
-            <div class="photo-gallery"> 
-                <div class="photo-item">
-                    <img src="images/20241008_134134.jpg" alt="Sky Photography">                                                                                                                             
-                    <div class="photo-overlay">                                                                                                                                                      
-                        <h3>Sky</h3>                                                                                                                                                                 
-                        <p>Sunsets, clouds, and celestial moments</p>                                                                                                                                
-                    </div>                                                                                                                                                                           
-                </div>                                                                                                                                                                               
-                <div class="photo-item">                                                                                                                                                             
-                    <img src="images/20240616_131749.jpg" alt="Wildlife Photography">                                                                                                                        
-                    <div class="photo-overlay">                                                                                                                                                      
-                        <h3>Wildlife</h3>                                                                                                                                                            
-                        <p>Animals in their natural habitat</p>                                                                                                                                      
-                    </div>                                                                                                                                                                           
-                </div>                                                                                                                                                                               
-                <div class="photo-item">                                                                                                                                                             
-                    <img src="images/20250927_120223.jpg" alt="Temple Photography">                                                                                                                          
-                    <div class="photo-overlay">                                                                                                                                                      
-                        <h3>Temple</h3>                                                                                                                                                              
-                        <p>Sacred architecture and spiritual spaces</p>                                                                                                                              
-                    </div>                                                                                                                                                                           
-                </div>   
-                <div class="photo-item">                                                                                                                                                 
-                    <img src="images/20240804_112109.jpg" alt="Nature Photography">                                                                                                              
-                    <div class="photo-overlay">                                                                                                                                          
-                        <h3>Nature</h3>                                                                                                                                                  
-                        <p>Capturing the beauty of landscapes and wildlife</p>                                                                                                           
-                    </div>                                                                                                                                                               
-                </div>         
-                <div class="photo-item">                                                                                                                                                 
-                    <img src="images/20250314_120521.jpg" alt="Portrait Photography">                                                                                                            
-                    <div class="photo-overlay">                                                                                                                                          
-                        <h3>Portraits</h3>                                                                                                                                               
-                        <p>Professional and candid portrait sessions</p>                                                                                                                 
-                    </div>                                                                                                                                                               
-                </div>                                                                                                                                                                   
-                <div class="photo-item">                                                                                                                                                 
-                    <img src="images/20250130_114152.jpg" alt="Street Photography">                                                                                                              
-                    <div class="photo-overlay">                                                                                                                                          
-                        <h3>Street</h3>                                                                                                                                                  
-                        <p>Urban life and street moments</p>                                                                                                                             
-                    </div>                                                                                                                                                               
-                </div>                                                                                                                                                                   
-                <div class="photo-item">                                                                                                                                                 
-                    <img src="images/20250226_151209(1).jpg" alt="Event Photography">                                                                                                               
-                    <div class="photo-overlay">                                                                                                                                          
-                        <h3>Events</h3>                                                                                                                                                  
-                        <p>Weddings, celebrations, and special moments</p>                                                                                                               
-                    </div>                                                                                                                                                               
-                </div>                                                                                                                                                                   
-                <div class="photo-item">                                                                                                                                                 
-                    <img src="images/20240215_110120.jpg" alt="Architecture Photography">                                                                                                        
-                    <div class="photo-overlay">                                                                                                                                          
-                        <h3>Architecture</h3>                                                                                                                                            
-                        <p>Buildings and structural photography</p>                                                                                                                      
-                    </div>                                                                                                                                                               
-                </div>                                                                                                                                                                   
-                <div class="photo-item">                                                                                                                                                 
-                    <img src="images/20241106_070848.jpg" alt="Macro Photography">                                                                                                               
-                    <div class="photo-overlay">                                                                                                                                          
-                        <h3>Macro</h3>                                                                                                                                                   
-                        <p>Close-up details and textures</p>                                                                                                                             
-                    </div>                                                                                                                                                               
-                </div>                                                                                                                                                                   
-            </div>                                                                                                                                                                       
-            <a href="#" class="btn">View Full Gallery</a>                                                                                                                                
-        </div>                                                                                                                                                                           
-    </div> 
+    <main id="main">
+        <!-- ============ hero ============ -->
+        <section id="home" class="hero">
+            <div class="hero-aura" aria-hidden="true"></div>
+            <div class="hero-grid-lines" aria-hidden="true"></div>
+            <div class="container hero-inner">
+                <div class="hero-copy">
+                    <p class="badge reveal"><span class="badge-dot" aria-hidden="true"></span> Open to new opportunities
+                    </p>
+                    <p class="hero-role reveal">Lead Software Engineer</p>
+                    <h1 class="hero-title reveal">Hi, I'm <span class="accent">Jagdish</span><br>Sahoo from India</h1>
+                    <p class="hero-lede reveal">I build enterprise Java and Spring Boot microservices, React frontends
+                        and AWS cloud systems that stay fast under real traffic.</p>
 
-    <!-- -------------services-------------- -->
-    <div id="services">
-        <div class="container">
-            <h1 class="sub-title">My Services</h1>
-            <div class="services-list">
-                <div>
-                    <i class="fa-solid fa-code"></i>
-                    <h2>RESTful API Design And Integration</h2>
-                    <p>RESTful API design focuses on creating scalable, efficient web services using resource-based architecture. By implementing stateless communication, uniform interfaces, and standard HTTP methods, developers can build flexible APIs that enable seamless interaction between clients and servers, ensuring robust and maintainable web application integration.</p>
-                    <a href="https://www.ibm.com/docs/en/zos-connect/zosconnect/3.0?topic=apis-restful-web-services-api-design">Learn more</a>
+                    <div class="hero-cta reveal">
+                        <a href="#portfolio" class="btn btn-primary">
+                            View my work <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a href="images/Resume_Jagdish_Sahoo.pdf" download class="btn btn-ghost">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i> Download CV
+                        </a>
+                    </div>
+
+                    <ul class="hero-stats reveal">
+                        <li>
+                            <strong class="counter" data-count="4.3" data-decimals="1">0</strong>
+                            <span>Years of experience</span>
+                        </li>
+                        <li>
+                            <strong class="counter" data-count="1480" data-suffix="+">0</strong>
+                            <span>Problems solved</span>
+                        </li>
+                        <li>
+                            <strong class="counter" data-count="50" data-suffix="+">0</strong>
+                            <span>Contests played</span>
+                        </li>
+                    </ul>
                 </div>
-                <div>
-                    <i class="fa-solid fa-crop"></i>
-                    <h2>Spring Security Implementation</h2>
-                    <p>Spring Security provides robust authentication and authorization mechanisms for Java applications. By implementing configurable security filters, it enables developers to define user roles, manage access controls, and protect web resources through features like password encoding, CSRF protection, and customizable authentication strategies.</p>
-                    <a href="https://www.geeksforgeeks.org/spring-security-tutorial/">Learn more</a>
-                </div>
-                <div>
-                    <i class="fa-brands fa-app-store"></i>
-                    <h2>Event-driven Communication Using Apache Kafka</h2>
-                    <p>Apache Kafka enables robust event-driven communication by providing a distributed streaming platform where microservices can publish and subscribe to events asynchronously. It facilitates real-time data streaming, ensures loose coupling between services, and supports scalable, fault-tolerant communication through its publish-subscribe messaging model.</p>
-                    <a href="https://estuary.dev/kafka-event-driven-architecture/">Learn more</a>
+
+                <div class="hero-portrait reveal">
+                    <img src="images/opt/hero-portrait-1200.jpg"
+                        srcset="images/opt/hero-portrait-800.jpg 800w, images/opt/hero-portrait-1200.jpg 922w"
+                        sizes="(max-width: 900px) 280px, 38vw" alt="Jagdish Sahoo" width="922" height="835"
+                        fetchpriority="high" decoding="async">
                 </div>
             </div>
-        </div>
-    </div>
-    
-    <!-- -------------------Portfolio------------------ -->
-    <div id="portfolio">
-        <div class="container">
-            <h1 class="sub-title">My Work</h1>
-            <div class="work-list">
-                <div class="work">
-                    <img src="images/work-1.png">
-                    <div class="layer">
-                        <h3>Social Media App</h3>
-                        <p>The app contects you the talented people around the world. Download it from play store.
+            <a href="#about" class="scroll-hint" aria-label="Scroll to about section">
+                <span class="scroll-hint-line" aria-hidden="true"></span>
+            </a>
+        </section>
+
+        <!-- ============ about ============ -->
+        <section id="about" class="section">
+            <div class="container">
+                <p class="section-eyebrow reveal">01 — About</p>
+                <h2 class="section-title reveal">About Me</h2>
+
+                <div class="about-grid">
+                    <div class="about-media reveal">
+                        <img src="images/opt/user-800.jpg" alt="Portrait of Jagdish Sahoo" width="613" height="800"
+                            loading="lazy" decoding="async">
+                        <div class="about-media-glow" aria-hidden="true"></div>
+                    </div>
+
+                    <div class="about-body">
+                        <p class="lede reveal">Experienced Software Development Engineer with around 4.3 years
+                            developing enterprise Java and Spring Boot microservices, React frontends and AWS cloud
+                            solutions using Docker, ECS and EC2 across financial services and e-commerce platforms.</p>
+
+                        <div class="tabs reveal">
+                            <div class="tab-titles" role="tablist" aria-label="About me details">
+                                <button class="tab-link is-active" role="tab" id="tab-skills" aria-selected="true"
+                                    aria-controls="panel-skills" type="button">Technical Skills</button>
+                                <button class="tab-link" role="tab" id="tab-experience" aria-selected="false"
+                                    aria-controls="panel-experience" type="button" tabindex="-1">Experience</button>
+                                <button class="tab-link" role="tab" id="tab-education" aria-selected="false"
+                                    aria-controls="panel-education" type="button" tabindex="-1">Education</button>
+                            </div>
+
+                            <div class="tab-panel is-active" role="tabpanel" id="panel-skills"
+                                aria-labelledby="tab-skills" tabindex="0">
+                                <div class="skill-group">
+                                    <h3>Languages</h3>
+                                    <ul class="chips">
+                                        <li>Java</li>
+                                        <li>Python</li>
+                                    </ul>
+                                </div>
+                                <div class="skill-group">
+                                    <h3>Frameworks &amp; Technologies</h3>
+                                    <ul class="chips">
+                                        <li>Spring</li>
+                                        <li>Spring Boot</li>
+                                        <li>Spring Security</li>
+                                        <li>REST APIs</li>
+                                        <li>JPA</li>
+                                        <li>Hibernate</li>
+                                        <li>JWT</li>
+                                        <li>OAuth</li>
+                                    </ul>
+                                </div>
+                                <div class="skill-group">
+                                    <h3>Cloud &amp; DevOps</h3>
+                                    <ul class="chips">
+                                        <li>AWS EC2</li>
+                                        <li>AWS ECS</li>
+                                        <li>IAM</li>
+                                        <li>VPC</li>
+                                        <li>Docker</li>
+                                        <li>Jenkins</li>
+                                        <li>Kafka</li>
+                                    </ul>
+                                </div>
+                                <div class="skill-group">
+                                    <h3>Databases</h3>
+                                    <ul class="chips">
+                                        <li>PostgreSQL</li>
+                                        <li>MySQL</li>
+                                        <li>DynamoDB</li>
+                                    </ul>
+                                </div>
+                                <div class="skill-group">
+                                    <h3>Web &amp; Tools</h3>
+                                    <ul class="chips">
+                                        <li>HTML5</li>
+                                        <li>CSS3</li>
+                                        <li>IntelliJ</li>
+                                        <li>Eclipse</li>
+                                        <li>STS</li>
+                                        <li>VS Code</li>
+                                        <li>Postman</li>
+                                        <li>Git</li>
+                                        <li>SVN</li>
+                                    </ul>
+                                </div>
+                                <div class="skill-group">
+                                    <h3>Foundations &amp; Practice</h3>
+                                    <ul class="chips">
+                                        <li>Data Structures</li>
+                                        <li>Algorithms</li>
+                                        <li>OOP</li>
+                                        <li>Agile</li>
+                                        <li>Scrum</li>
+                                    </ul>
+                                </div>
+                                <div class="skill-group">
+                                    <h3>AI Tools</h3>
+                                    <ul class="chips">
+                                        <li>Kiro</li>
+                                        <li>Copilot</li>
+                                        <li>Claude</li>
+                                        <li>Cursor</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="tab-panel" role="tabpanel" id="panel-experience"
+                                aria-labelledby="tab-experience" tabindex="0" hidden>
+                                <ol class="timeline">
+                                    <li>
+                                        <span class="timeline-date">June 2025 — Present</span>
+                                        <h3>Lead Software Engineer</h3>
+                                        <p>Persistent Systems</p>
+                                    </li>
+                                    <li>
+                                        <span class="timeline-date">June 2022 — June 2025</span>
+                                        <h3>Digital Specialist Engineer I</h3>
+                                        <p>Infosys</p>
+                                    </li>
+                                    <li>
+                                        <span class="timeline-date">Apr 2021 — Apr 2022</span>
+                                        <h3>Student Placement Coordinator</h3>
+                                        <p>Odisha University of Technology and Research</p>
+                                    </li>
+                                    <li>
+                                        <span class="timeline-date">Feb 2021 — May 2021</span>
+                                        <h3>Open Source Contributor</h3>
+                                        <p>GirlScript Summer of Code</p>
+                                    </li>
+                                </ol>
+                            </div>
+
+                            <div class="tab-panel" role="tabpanel" id="panel-education" aria-labelledby="tab-education"
+                                tabindex="0" hidden>
+                                <ol class="timeline">
+                                    <li>
+                                        <span class="timeline-date">2019 — 2022</span>
+                                        <h3>MCA</h3>
+                                        <p>Odisha University of Technology and Research</p>
+                                    </li>
+                                    <li>
+                                        <span class="timeline-date">2016 — 2019</span>
+                                        <h3>BSc Chemistry</h3>
+                                        <p>North Orissa University</p>
+                                    </li>
+                                    <li>
+                                        <span class="timeline-date">2014 — 2016</span>
+                                        <h3>Intermediate</h3>
+                                        <p>Barbil Junior College, Barbil</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ coding profiles ============ -->
+        <section id="coding-profiles" class="section section-alt">
+            <div class="container">
+                <p class="section-eyebrow reveal">02 — Practice</p>
+                <h2 class="section-title reveal">Coding Profiles</h2>
+
+                <div class="card-grid">
+                    <article class="card stat-card reveal">
+                        <i class="fa-solid fa-laptop-code card-icon" aria-hidden="true"></i>
+                        <h3>LeetCode</h3>
+                        <p class="stat-figure"><span class="counter" data-count="1100" data-suffix="+">0</span>
+                            <small>problems solved</small>
                         </p>
-                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-                <div class="work">
-                    <img src="images/work-2.png">
-                    <div class="layer">
-                        <h3>Music App</h3>
-                        <p>The app contects you the talented people around the world. Download it from play store.
-                        </p>
-                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-                <div class="work">
-                    <img src="images/work-3.png">
-                    <div class="layer">
-                        <h3>Online Shopping App</h3>
-                        <p>The app contects you the talented people around the world. Download it from play store.
-                        </p>
-                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-            </div>
-            <a href="#" class="btn">See more</a>
-        </div>
-    </div>
-    
-    <!-- ----------------contact------------------ -->
-    <div id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="contact-left">
-                    <h1 class="sub-title">Contact Me</h1>
-                    <p><i class="fa-solid fa-paper-plane"></i> jagdish.cet.edu@gmail.com</p>
-                    <p><i class="fa-solid fa-phone-square-alt"></i> +919999****99</p>
-                    <div class="social-icons">
-                        <a href="https://github.com/Jagdish1998"><i class="fa-brands fa-square-github"></i></a>
-                        <a href="https://www.linkedin.com/in/jagdishsahoo/"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="https://www.instagram.com/n_a_r_c_o_t_i_c_18/"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/jagdish.sahoo.104/"><i class="fa-brands fa-facebook"></i></a>
-                        <a href=" https://x.com/JagdishSahoo5/"><i class="fa-brands fa-twitter-square"></i></a>
-                    </div>
-                    <!-- <a href="images/Resume_Jagdish_Sahoo.pdf" download class="btn btn2">Download CV</a> -->
-                </div>
-                <div class="contact-right">
-                    <form name="submit-to-google-sheet">
-                        <input type="text" name="Name" placeholder="Your Name" required>
-                        <input type="email" name="Email" placeholder="Your Email" required>
-                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                        <button type="submit" class="btn btn2">Submit</button>
-                    </form>
-                    <span id="msg"></span>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>© 2026 Jagdish Sahoo. All Rights Reserved <i class="fa-solid fa-heart"></i>.</p>
-        </div>
-    </div>
-    <div id="gallery-modal" class="modal">
-        <span class="close">&times;</span>                                                                                                                                               
-        <img class="modal-content" id="modal-img">                                                                                                                                       
-        <div class="modal-nav">                                                                                                                                                          
-            <button id="prev-btn">&#10094;</button>                                                                                                                                      
-            <button id="next-btn">&#10095;</button>                                                                                                                                      
-        </div>                                                                                                                                                                           
-        <div class="modal-caption"></div>                                                                                                                                                
-    </div> 
-    <script>
-        var tablinks = document.getElementsByClassName("tab-links");
-        var tabcontents = document.getElementsByClassName("tab-contents");
+                        <p>Data structures, dynamic programming and system design, with a top 10% ranking and a
+                            consistent solving streak.</p>
+                        <a class="card-link" href="https://leetcode.com/u/jagdish1998/" target="_blank"
+                            rel="noopener noreferrer">
+                            View profile <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                    </article>
 
-        function opentab(tabname){
-            for(tablink of tablinks){
-                tablink.classList.remove("active-link");
-            }
-            for(tabcontent of tabcontents){
-                tabcontent.classList.remove("active-tab");
-            }
-            event.currentTarget.classList.add("active-link");
-            document.getElementById(tabname).classList.add("active-tab");
-        }
-    </script>
-    <script>
-        var sidemenu = document.getElementById("sidemenu");
-        function openmenu(){
-            sidemenu.style.right = "0";
-        }
-        function closemenu(){
-            sidemenu.style.right = "-200px";
-        }
-    </script>
-    <script>
-        const modal = document.getElementById("gallery-modal");
-        const modalImg = document.getElementById("modal-img");                                                                                                                               
-        const photos = ["images/20241008_134134.jpg", "images/20240616_131749.jpg", "images/20250927_120223.jpg", "images/20240804_112109.jpg",
-                "images/20250314_120521.jpg", "images/20250130_114152.jpg", "images/20250226_151209(1).jpg", "images/20240215_110120.jpg",
-                "images/20241106_070848.jpg"];                                                                                                                                                    
-        let currentPhoto = 0;                                                                                                                                                                
-                                                                                                                                                                                             
-        document.querySelector("#photography .btn").onclick = function() {                                                                                                                   
-            modal.style.display = "block";                                                                                                                                                   
-            showPhoto(0);                                                                                                                                                                    
-        }                                                                                                                                                                                    
-                                                                                                                                                                                             
-        document.querySelector(".close").onclick = function() {                                                                                                                              
-            modal.style.display = "none";                                                                                                                                                    
-        }                                                                                                                                                                                    
-                                                                                                                                                                                             
-        document.getElementById("prev-btn").onclick = function() {                                                                                                                           
-            currentPhoto = (currentPhoto - 1 + photos.length) % photos.length;                                                                                                               
-            showPhoto(currentPhoto);                                                                                                                                                         
-        }                                                                                                                                                                                    
-                                                                                                                                                                                             
-        document.getElementById("next-btn").onclick = function() {                                                                                                                           
-            currentPhoto = (currentPhoto + 1) % photos.length;                                                                                                                               
-            showPhoto(currentPhoto);                                                                                                                                                         
-        }                                                                                                                                                                                    
-                                                                                                                                                                                             
-        function showPhoto(index) {                                                                                                                                                          
-            modalImg.src = photos[index];                                                                                                                                                    
-            currentPhoto = index;                                                                                                                                                            
-        }
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbx2J2WPrY3CFJh2td9vYh7c3IqP7hX9WvoaqC53TtLL7Gq-FczAh58H6rbcBrquQjxk/exec'
-        const form = document.forms['submit-to-google-sheet']
-        const msg = document.getElementById("msg")
-      
-        form.addEventListener('submit', e => {
-          e.preventDefault()
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                msg.innerHTML = "Message sent successfully"
-                setTimeout(function(){
-                    msg.innerHTML = ""
-                }, 5000)
-                form.reset()
-            })
-            .catch(error => console.error('Error!', error.message))
-        })
-      </script>
+                    <article class="card stat-card reveal">
+                        <i class="fa-solid fa-graduation-cap card-icon" aria-hidden="true"></i>
+                        <h3>GeeksForGeeks</h3>
+                        <p class="stat-figure"><span class="counter" data-count="380" data-suffix="+">0</span>
+                            <small>problems solved</small>
+                        </p>
+                        <p>Algorithm practice alongside Java tutorials and interview preparation write-ups.</p>
+                        <a class="card-link" href="https://www.geeksforgeeks.org/profile/jagdish1998?tab=activity"
+                            target="_blank" rel="noopener noreferrer">
+                            View profile <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                    </article>
+
+                    <article class="card stat-card reveal">
+                        <i class="fa-solid fa-trophy card-icon" aria-hidden="true"></i>
+                        <h3>CodeChef</h3>
+                        <p class="stat-figure"><span class="counter" data-count="3">0</span> <small>star rating</small>
+                        </p>
+                        <p>1400+ rating across 50+ contests. Strongest in mathematical algorithms and graph theory.</p>
+                        <a class="card-link" href="https://www.codechef.com/users/jagdish1998" target="_blank"
+                            rel="noopener noreferrer">
+                            View profile <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ photography ============ -->
+        <section id="photography" class="section">
+            <div class="container">
+                <p class="section-eyebrow reveal">03 — Off the clock</p>
+                <h2 class="section-title reveal">My Photography</h2>
+                <p class="section-lede reveal">Shot on a phone, mostly around Odisha. Click any frame to open the
+                    lightbox, then use the arrow keys.</p>
+
+                <div class="gallery" id="gallery">
+                    <figure class="photo" data-full="images/opt/20241008_134134-1600.jpg" data-title="Sky"
+                        data-caption="Sunsets, clouds and celestial moments">
+                        <img src="images/opt/20241008_134134-800.jpg" srcset="images/opt/20241008_134134-500.jpg 500w, images/opt/20241008_134134-800.jpg 800w" sizes="(min-width: 1025px) 264px, (min-width: 621px) 30vw, 45vw" alt="Cloudy sky at sunset" width="600" height="800"
+                            loading="lazy" decoding="async">
+                        <figcaption>
+                            <h3>Sky</h3>
+                            <p>Sunsets, clouds and celestial moments</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo" data-full="images/opt/20240616_131749-1600.jpg" data-title="Wildlife"
+                        data-caption="Animals in their natural habitat">
+                        <img src="images/opt/20240616_131749-800.jpg" srcset="images/opt/20240616_131749-500.jpg 500w, images/opt/20240616_131749-800.jpg 800w" sizes="(min-width: 1025px) 264px, (min-width: 621px) 30vw, 45vw" alt="Wild animal in natural habitat" width="630"
+                            height="800" loading="lazy" decoding="async">
+                        <figcaption>
+                            <h3>Wildlife</h3>
+                            <p>Animals in their natural habitat</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo" data-full="images/opt/20250927_120223-1600.jpg" data-title="Temple"
+                        data-caption="Sacred architecture and spiritual spaces">
+                        <img src="images/opt/20250927_120223-800.jpg" srcset="images/opt/20250927_120223-500.jpg 500w, images/opt/20250927_120223-800.jpg 800w" sizes="(min-width: 1025px) 264px, (min-width: 621px) 30vw, 45vw" alt="Temple architecture detail" width="450"
+                            height="800" loading="lazy" decoding="async">
+                        <figcaption>
+                            <h3>Temple</h3>
+                            <p>Sacred architecture and spiritual spaces</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo" data-full="images/opt/20240804_112109-1600.jpg" data-title="Nature"
+                        data-caption="The beauty of landscapes and green cover">
+                        <img src="images/opt/20240804_112109-800.jpg" srcset="images/opt/20240804_112109-500.jpg 500w, images/opt/20240804_112109-800.jpg 800w" sizes="(min-width: 1025px) 264px, (min-width: 621px) 30vw, 45vw" alt="Green natural landscape" width="600"
+                            height="800" loading="lazy" decoding="async">
+                        <figcaption>
+                            <h3>Nature</h3>
+                            <p>The beauty of landscapes and green cover</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo" data-full="images/opt/20250314_120521-1600.jpg" data-title="Portraits"
+                        data-caption="Candid and posed portrait sessions">
+                        <img src="images/opt/20250314_120521-800.jpg" srcset="images/opt/20250314_120521-500.jpg 500w, images/opt/20250314_120521-800.jpg 800w" sizes="(min-width: 1025px) 264px, (min-width: 621px) 30vw, 45vw" alt="Portrait photograph" width="450" height="800"
+                            loading="lazy" decoding="async">
+                        <figcaption>
+                            <h3>Portraits</h3>
+                            <p>Candid and posed portrait sessions</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo" data-full="images/opt/20250130_114152-1600.jpg" data-title="Street"
+                        data-caption="Urban life and street moments">
+                        <img src="images/opt/20250130_114152-800.jpg" srcset="images/opt/20250130_114152-500.jpg 500w, images/opt/20250130_114152-800.jpg 800w" sizes="(min-width: 1025px) 264px, (min-width: 621px) 30vw, 45vw" alt="Street scene with people" width="450"
+                            height="800" loading="lazy" decoding="async">
+                        <figcaption>
+                            <h3>Street</h3>
+                            <p>Urban life and street moments</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo" data-full="images/opt/20250226_1512091-1600.jpg" data-title="Events"
+                        data-caption="Celebrations and special moments">
+                        <img src="images/opt/20250226_1512091-800.jpg" srcset="images/opt/20250226_1512091-500.jpg 500w, images/opt/20250226_1512091-800.jpg 800w" sizes="(min-width: 1025px) 264px, (min-width: 621px) 30vw, 45vw" alt="Event celebration photograph" width="644"
+                            height="800" loading="lazy" decoding="async">
+                        <figcaption>
+                            <h3>Events</h3>
+                            <p>Celebrations and special moments</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo" data-full="images/opt/20240215_110120-1600.jpg" data-title="Architecture"
+                        data-caption="Buildings, lines and structure">
+                        <img src="images/opt/20240215_110120-800.jpg" srcset="images/opt/20240215_110120-500.jpg 500w, images/opt/20240215_110120-800.jpg 800w" sizes="(min-width: 1025px) 264px, (min-width: 621px) 30vw, 45vw" alt="Architectural structure" width="600"
+                            height="800" loading="lazy" decoding="async">
+                        <figcaption>
+                            <h3>Architecture</h3>
+                            <p>Buildings, lines and structure</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo" data-full="images/opt/20241106_070848-1600.jpg" data-title="Macro"
+                        data-caption="Close-up details and textures">
+                        <img src="images/opt/20241106_070848-800.jpg" srcset="images/opt/20241106_070848-500.jpg 500w, images/opt/20241106_070848-800.jpg 800w" sizes="(min-width: 1025px) 264px, (min-width: 621px) 30vw, 45vw" alt="Macro close-up detail" width="600"
+                            height="800" loading="lazy" decoding="async">
+                        <figcaption>
+                            <h3>Macro</h3>
+                            <p>Close-up details and textures</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo" data-full="images/opt/20250816_095445-1600.jpg" data-title="Monsoon"
+                        data-caption="Rain, mist and heavy skies">
+                        <img src="images/opt/20250816_095445-800.jpg" srcset="images/opt/20250816_095445-500.jpg 500w, images/opt/20250816_095445-800.jpg 800w" sizes="(min-width: 1025px) 264px, (min-width: 621px) 30vw, 45vw" alt="Monsoon weather scene" width="450"
+                            height="800" loading="lazy" decoding="async">
+                        <figcaption>
+                            <h3>Monsoon</h3>
+                            <p>Rain, mist and heavy skies</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo" data-full="images/opt/20250130_173017-1600.jpg" data-title="Golden Hour"
+                        data-caption="The last warm light of the day">
+                        <img src="images/opt/20250130_173017-800.jpg" srcset="images/opt/20250130_173017-500.jpg 500w, images/opt/20250130_173017-800.jpg 800w" sizes="(min-width: 1025px) 264px, (min-width: 621px) 30vw, 45vw" alt="Golden hour light" width="554" height="800"
+                            loading="lazy" decoding="async">
+                        <figcaption>
+                            <h3>Golden Hour</h3>
+                            <p>The last warm light of the day</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo" data-full="images/opt/20251104_105558-1600.jpg" data-title="Everyday"
+                        data-caption="Small scenes worth a second look">
+                        <img src="images/opt/20251104_105558-800.jpg" srcset="images/opt/20251104_105558-500.jpg 500w, images/opt/20251104_105558-800.jpg 800w" sizes="(min-width: 1025px) 264px, (min-width: 621px) 30vw, 45vw" alt="Everyday life scene" width="450" height="800"
+                            loading="lazy" decoding="async">
+                        <figcaption>
+                            <h3>Everyday</h3>
+                            <p>Small scenes worth a second look</p>
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="section-action reveal">
+                    <button class="btn btn-ghost" id="open-gallery" type="button">
+                        <i class="fa-solid fa-images" aria-hidden="true"></i> Open slideshow
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ services ============ -->
+        <section id="services" class="section section-alt">
+            <div class="container">
+                <p class="section-eyebrow reveal">04 — Services</p>
+                <h2 class="section-title reveal">What I Do</h2>
+
+                <div class="card-grid">
+                    <article class="card reveal">
+                        <i class="fa-solid fa-code card-icon" aria-hidden="true"></i>
+                        <h3>REST API Design &amp; Integration</h3>
+                        <p>Resource-oriented services built on stateless communication and standard HTTP semantics, so
+                            the contract stays maintainable as the surface grows.</p>
+                        <a class="card-link"
+                            href="https://www.ibm.com/docs/en/zos-connect/zosconnect/3.0?topic=apis-restful-web-services-api-design"
+                            target="_blank" rel="noopener noreferrer">
+                            Learn more <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                    </article>
+
+                    <article class="card reveal">
+                        <i class="fa-solid fa-shield-halved card-icon" aria-hidden="true"></i>
+                        <h3>Spring Security Implementation</h3>
+                        <p>Authentication and authorisation via configurable filter chains, role-based access control,
+                            password encoding and CSRF protection.</p>
+                        <a class="card-link" href="https://www.geeksforgeeks.org/spring-security-tutorial/"
+                            target="_blank" rel="noopener noreferrer">
+                            Learn more <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                    </article>
+
+                    <article class="card reveal">
+                        <i class="fa-solid fa-tower-broadcast card-icon" aria-hidden="true"></i>
+                        <h3>Event-Driven Systems with Kafka</h3>
+                        <p>Asynchronous publish and subscribe pipelines that keep services loosely coupled and fault
+                            tolerant when a consumer needs to catch up.</p>
+                        <a class="card-link" href="https://estuary.dev/kafka-event-driven-architecture/" target="_blank"
+                            rel="noopener noreferrer">
+                            Learn more <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ portfolio ============ -->
+        <!--
+          TODO (Jagdish): these three cards are structure-only placeholders.
+          Replace the titles, descriptions, tech tags and both links with your
+          real projects, and swap images/opt/work-*-800.jpg for real screenshots.
+        -->
+        <section id="portfolio" class="section">
+            <div class="container">
+                <p class="section-eyebrow reveal">05 — Work</p>
+                <h2 class="section-title reveal">Selected Projects</h2>
+
+                <div class="work-grid">
+                    <article class="work reveal">
+                        <div class="work-media">
+                            <img src="images/opt/work-1-800.jpg" alt="Screenshot of the order processing service"
+                                width="650" height="800" loading="lazy" decoding="async">
+                            <div class="work-layer">
+                                <h3>Order Processing Service</h3>
+                                <p>Event-driven order pipeline with idempotent consumers and retry handling.</p>
+                                <ul class="chips chips-sm">
+                                    <li>Spring Boot</li>
+                                    <li>Kafka</li>
+                                    <li>PostgreSQL</li>
+                                </ul>
+                                <div class="work-links">
+                                    <a href="https://github.com/Jagdish1998" target="_blank" rel="noopener noreferrer"
+                                        aria-label="Order Processing Service source on GitHub">
+                                        <i class="fa-brands fa-github" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="https://github.com/Jagdish1998" target="_blank" rel="noopener noreferrer"
+                                        aria-label="Order Processing Service live demo">
+                                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="work reveal">
+                        <div class="work-media">
+                            <img src="images/opt/work-2-800.jpg" alt="Screenshot of the authentication gateway"
+                                width="650" height="800" loading="lazy" decoding="async">
+                            <div class="work-layer">
+                                <h3>Authentication Gateway</h3>
+                                <p>Centralised JWT and OAuth2 gateway issuing short-lived tokens for downstream
+                                    services.</p>
+                                <ul class="chips chips-sm">
+                                    <li>Spring Security</li>
+                                    <li>JWT</li>
+                                    <li>OAuth2</li>
+                                </ul>
+                                <div class="work-links">
+                                    <a href="https://github.com/Jagdish1998" target="_blank" rel="noopener noreferrer"
+                                        aria-label="Authentication Gateway source on GitHub">
+                                        <i class="fa-brands fa-github" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="https://github.com/Jagdish1998" target="_blank" rel="noopener noreferrer"
+                                        aria-label="Authentication Gateway live demo">
+                                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="work reveal">
+                        <div class="work-media">
+                            <img src="images/opt/work-3-800.jpg" alt="Screenshot of the container deployment pipeline"
+                                width="650" height="800" loading="lazy" decoding="async">
+                            <div class="work-layer">
+                                <h3>Container Deployment Pipeline</h3>
+                                <p>Build, test and release workflow shipping Docker images to AWS ECS.</p>
+                                <ul class="chips chips-sm">
+                                    <li>Docker</li>
+                                    <li>Jenkins</li>
+                                    <li>AWS ECS</li>
+                                </ul>
+                                <div class="work-links">
+                                    <a href="https://github.com/Jagdish1998" target="_blank" rel="noopener noreferrer"
+                                        aria-label="Container Deployment Pipeline source on GitHub">
+                                        <i class="fa-brands fa-github" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="https://github.com/Jagdish1998" target="_blank" rel="noopener noreferrer"
+                                        aria-label="Container Deployment Pipeline live demo">
+                                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="section-action reveal">
+                    <a href="https://github.com/Jagdish1998?tab=repositories" class="btn btn-ghost" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="fa-brands fa-github" aria-hidden="true"></i> More on GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ contact ============ -->
+        <section id="contact" class="section section-alt">
+            <div class="container">
+                <p class="section-eyebrow reveal">06 — Contact</p>
+                <h2 class="section-title reveal">Let's Work Together</h2>
+
+                <div class="contact-grid">
+                    <div class="contact-info reveal">
+                        <p class="lede">Got a role, a project or a question? Drop a message and I'll get back to you.
+                        </p>
+
+                        <ul class="contact-list">
+                            <li>
+                                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                                <a href="mailto:jagdish.cet.edu@gmail.com">jagdish.cet.edu@gmail.com</a>
+                                <button class="copy-btn" type="button" data-copy="jagdish.cet.edu@gmail.com"
+                                    aria-label="Copy email address">
+                                    <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                                <span>India — open to remote</span>
+                            </li>
+                        </ul>
+
+                        <div class="social-icons">
+                            <a href="https://github.com/Jagdish1998" target="_blank" rel="noopener noreferrer"
+                                aria-label="GitHub">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/jagdishsahoo/" target="_blank" rel="noopener noreferrer"
+                                aria-label="LinkedIn">
+                                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://www.instagram.com/n_a_r_c_o_t_i_c_18/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Instagram">
+                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://www.facebook.com/jagdish.sahoo.104/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Facebook">
+                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://x.com/JagdishSahoo5/" target="_blank" rel="noopener noreferrer"
+                                aria-label="X, formerly Twitter">
+                                <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+                            </a>
+                        </div>
+
+                        <a href="images/Resume_Jagdish_Sahoo.pdf" download class="btn btn-primary">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i> Download CV
+                        </a>
+                    </div>
+
+                    <div class="contact-form-wrap reveal">
+                        <form name="submit-to-google-sheet" id="contact-form" novalidate>
+                            <div class="field">
+                                <input type="text" id="field-name" name="Name" placeholder=" " required
+                                    autocomplete="name" aria-describedby="err-name">
+                                <label for="field-name">Your name</label>
+                                <small class="field-error" id="err-name"></small>
+                            </div>
+
+                            <div class="field">
+                                <input type="email" id="field-email" name="Email" placeholder=" " required
+                                    autocomplete="email" aria-describedby="err-email">
+                                <label for="field-email">Your email</label>
+                                <small class="field-error" id="err-email"></small>
+                            </div>
+
+                            <div class="field">
+                                <textarea id="field-message" name="Message" rows="6" placeholder=" " required
+                                    aria-describedby="err-message"></textarea>
+                                <label for="field-message">Your message</label>
+                                <small class="field-error" id="err-message"></small>
+                            </div>
+
+                            <!-- Honeypot: hidden from users, bots tend to fill it. -->
+                            <div class="honeypot" aria-hidden="true">
+                                <label for="field-company">Company</label>
+                                <input type="text" id="field-company" name="Company" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
+                                <span class="btn-label">Send message</span>
+                                <span class="spinner" aria-hidden="true"></span>
+                            </button>
+                        </form>
+                        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© <span id="year">2026</span> Jagdish Sahoo. All rights reserved.</p>
+            <p class="footer-note">Built with plain HTML, CSS and JavaScript.</p>
+        </div>
+    </footer>
+
+    <button class="to-top" id="to-top" type="button" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- ============ lightbox ============ -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+        <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close viewer">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="Previous photo">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <figure class="lightbox-figure">
+            <img id="lightbox-img" alt="">
+            <figcaption>
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-caption"></p>
+                <span class="lightbox-count" id="lightbox-count"></span>
+            </figcaption>
+        </figure>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="Next photo">
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </button>
+    </div>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-

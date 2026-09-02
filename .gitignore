@@ -1,0 +1,8 @@
+# Editor / OS
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local tooling output
+*.log
