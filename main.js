@@ -489,7 +489,7 @@
 
                     window.setTimeout(function () {
                         btn.classList.remove('is-copied');
-                        if (icon) icon.className = 'fa-regular fa-copy';
+                        if (icon) icon.className = 'fa-solid fa-copy';
                         btn.setAttribute('aria-label', 'Copy email address');
                     }, 2000);
                 }).catch(function () {

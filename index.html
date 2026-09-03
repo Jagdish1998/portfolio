@@ -29,8 +29,12 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Inter carries the UI: same x-height as Poppins so nothing looks smaller,
+         but 4.4% narrower, and it is drawn for screen UI at small sizes. Variable
+         axes mean one file instead of five static weights, and the previous setup
+         was downloading a 300 weight nothing used. -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400..600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/5ad0b15baf.js" crossorigin="anonymous" async></script>
@@ -127,7 +131,7 @@
                             <span>Years of experience</span>
                         </li>
                         <li>
-                            <strong class="counter" data-count="1480" data-suffix="+">0</strong>
+                            <strong class="counter" data-count="1500+" data-suffix="+">0</strong>
                             <span>Problems solved</span>
                         </li>
                         <li>
@@ -662,7 +666,9 @@
                                 <a href="mailto:jagdish.cet.edu@gmail.com">jagdish.cet.edu@gmail.com</a>
                                 <button class="copy-btn" type="button" data-copy="jagdish.cet.edu@gmail.com"
                                     aria-label="Copy email address">
-                                    <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                                    <!-- Solid, not regular: this was the only regular-weight icon
+                                         on the page and it pulled in a whole 26KB font file. -->
+                                    <i class="fa-solid fa-copy" aria-hidden="true"></i>
                                 </button>
                             </li>
                             <li>
