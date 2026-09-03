@@ -324,12 +324,21 @@ section[id] {
 .logo {
     width: 132px;
     height: auto;
-    /* Wordmark ships white with a transparent background. */
-    transition: filter 0.3s var(--ease), opacity 0.25s var(--ease);
+    transition: opacity 0.25s var(--ease);
 }
 
-[data-theme="light"] .logo {
-    filter: invert(1);
+/* Swap variants rather than filtering: the mark has an accent-coloured J that
+   an invert would turn green. */
+.logo-light {
+    display: none;
+}
+
+[data-theme="light"] .logo-dark {
+    display: none;
+}
+
+[data-theme="light"] .logo-light {
+    display: block;
 }
 
 .logo-link:hover .logo {

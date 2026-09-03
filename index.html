@@ -21,7 +21,12 @@
         content="Enterprise Java and Spring Boot microservices, React frontends and AWS cloud solutions.">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="icon" type="image/png" href="images/icon-logo.png">
+    <!-- The full wordmark is illegible below ~64px, so the icons use the
+         leading "J" in white on the brand accent. -->
+    <link rel="icon" href="images/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -57,7 +62,12 @@
     <header class="site-header" id="site-header">
         <div class="container nav-wrap">
             <a href="#home" class="logo-link" aria-label="Jagdish Sahoo, home">
-                <img src="images/opt/logo-mark.png" alt="Jagdish Sahoo" class="logo" width="300" height="82">
+                <!-- Two variants because the mark is two-tone: a CSS invert filter
+                     would turn the accent J green. -->
+                <img src="images/opt/logo-mark.png" alt="Jagdish Sahoo" class="logo logo-dark" width="300"
+                    height="82">
+                <img src="images/opt/logo-mark-light.png" alt="" aria-hidden="true" class="logo logo-light" width="300"
+                    height="82">
             </a>
 
             <nav id="primary-nav" aria-label="Primary">
