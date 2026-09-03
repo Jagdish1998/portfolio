@@ -31,12 +31,10 @@
             root.setAttribute('data-theme', theme);
             if (!toggle) return;
 
-            var icon = toggle.querySelector('i');
+            // The icon itself is swapped in CSS off [data-theme]; only the
+            // accessible name needs updating here.
             var goingTo = theme === 'dark' ? 'light' : 'dark';
             toggle.setAttribute('aria-label', 'Switch to ' + goingTo + ' theme');
-            if (icon) {
-                icon.className = theme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
-            }
 
             var meta = document.querySelector('meta[name="theme-color"]');
             if (meta) {

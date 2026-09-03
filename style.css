@@ -416,6 +416,14 @@ section[id] {
     transform: translateY(-2px);
 }
 
+/* The toggle advertises its action, not the current state: a sun while dark
+   (click for light) and a moon while light (click for dark). That matches the
+   button's aria-label, which describes the action. */
+[data-theme="dark"] .theme-icon-moon,
+[data-theme="light"] .theme-icon-sun {
+    display: none;
+}
+
 .nav-open,
 .nav-close {
     display: none;
@@ -1641,15 +1649,13 @@ section[id] {
         color: var(--accent);
     }
 
+    /* Sizing, centring and hover come from .icon-btn so the X matches the
+       hamburger exactly. Only its position is set here: centred on the header
+       row, otherwise it lands 8px below the button the user just tapped. */
     .nav-close {
         position: absolute;
-        top: 1.25rem;
-        right: 1.25rem;
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        border: 1px solid var(--border);
-        color: var(--text-muted);
+        top: calc((var(--header-h) - 42px) / 2);
+        right: clamp(1.25rem, 4vw, 3rem);
     }
 }
 
