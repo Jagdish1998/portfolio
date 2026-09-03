@@ -3,7 +3,17 @@
    ============================================================ */
 :root {
     --accent: #ff004f;
-    --accent-hover: #ff2f6d;
+    /* White on #ff004f is only 3.91:1, below the 4.5 needed for button labels,
+       so filled accent surfaces use a darker variant. Hover darkens further,
+       which both reads as pressed and improves contrast. */
+    --accent-strong: #e50048;
+    --accent-hover: #c70040;
+    /* Small accent text. The bright pink clears 4.5:1 on dark but not on a pale
+       page, so the light theme overrides this. */
+    --accent-ink: var(--accent);
+    /* Secondary hue. It already existed inside the hero aura gradient and was
+       used nowhere else; promoted to a real token. */
+    --accent-2: #5a3cff;
     --accent-soft: rgba(255, 0, 79, 0.12);
     --accent-ring: rgba(255, 0, 79, 0.35);
 
@@ -15,12 +25,29 @@
     --bg-alt: #0c0c10;
     --text: #f4f4f5;
     --text-muted: #a7a7b4;
-    --text-dim: #76768a;
+    /* Lightened from #76768a, which was only 3.6:1 on raised surfaces. */
+    --text-dim: #8b8b9e;
     --border: rgba(255, 255, 255, 0.09);
     --border-strong: rgba(255, 255, 255, 0.16);
     --header-bg: rgba(8, 8, 10, 0.93);
-    --shadow-lg: 0 24px 60px -20px rgba(0, 0, 0, 0.75);
     --shadow-sm: 0 6px 20px -8px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 24px 60px -20px rgba(0, 0, 0, 0.75);
+    --shadow-xl: 0 30px 80px -30px rgba(0, 0, 0, 0.9);
+
+    /* Accent glows and the focus ring, previously written inline in three places. */
+    --glow: 0 10px 30px -12px var(--accent-ring);
+    --glow-lg: 0 16px 36px -12px var(--accent-ring);
+    --focus-ring: 0 0 0 4px var(--accent-soft);
+
+    /* A 1px inner top highlight makes dark surfaces read as raised rather than
+       as slightly lighter patches. Transparent in light theme. */
+    --edge-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    /* Motion scale, replacing eight ad-hoc durations. */
+    --dur-fast: 0.18s;
+    --dur-base: 0.28s;
+    --dur-slow: 0.45s;
+    --dur-image: 0.65s;
 
     --success: #34d399;
     --error: #fb7185;
@@ -63,7 +90,12 @@
     --bg-alt: #f5f5f8;
     --text: #14141a;
     --text-muted: #55555f;
-    --text-dim: #7c7c88;
+    /* Darkened from #7c7c88, which was 3.99:1 on the page background. */
+    --text-dim: #6b6b78;
+    /* The bright pink is 3.79:1 on a pale page, so small accent text darkens. */
+    --accent-ink: #e50048;
+    --accent-2: #4a2ee0;
+    --edge-highlight: inset 0 1px 0 rgba(255, 255, 255, 0);
     --border: rgba(10, 10, 20, 0.1);
     --border-strong: rgba(10, 10, 20, 0.18);
     --header-bg: rgba(251, 251, 253, 0.94);
@@ -103,7 +135,7 @@ body {
     font-size: var(--step-0);
     line-height: 1.7;
     overflow-x: hidden;
-    transition: background 0.3s var(--ease), color 0.3s var(--ease);
+    transition: background var(--dur-base) var(--ease), color var(--dur-base) var(--ease);
 }
 
 body.no-scroll {
@@ -173,7 +205,7 @@ section[id] {
     padding: 0.7rem 1.2rem;
     border-radius: 0 0 var(--radius) var(--radius);
     font-size: var(--step--1);
-    transition: transform 0.25s var(--ease);
+    transition: transform var(--dur-fast) var(--ease);
 }
 
 .skip-link:focus-visible {
@@ -200,7 +232,7 @@ section[id] {
     font-size: var(--step--1);
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-ink);
     /* Tight to the title: the two are a single label-plus-heading unit. */
     margin-bottom: var(--space-2);
 }
@@ -251,8 +283,8 @@ section[id] {
     font-weight: 500;
     border: 1px solid transparent;
     cursor: pointer;
-    transition: transform 0.25s var(--ease), background 0.25s var(--ease),
-        border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), color 0.25s var(--ease);
+    transition: transform var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease),
+        border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
 
 .btn:hover {
@@ -264,14 +296,14 @@ section[id] {
 }
 
 .btn-primary {
-    background: var(--accent);
+    background: var(--accent-strong);
     color: #fff;
-    box-shadow: 0 10px 30px -12px var(--accent-ring);
+    box-shadow: var(--glow);
 }
 
 .btn-primary:hover {
     background: var(--accent-hover);
-    box-shadow: 0 16px 36px -12px var(--accent-ring);
+    box-shadow: var(--glow-lg);
 }
 
 .btn-ghost {
@@ -304,14 +336,14 @@ section[id] {
     display: block;
     height: 100%;
     width: 0;
-    background: linear-gradient(90deg, var(--accent), #ff7aa2);
+    background: linear-gradient(90deg, var(--accent-2), var(--accent));
 }
 
 .site-header {
     position: fixed;
     inset: 0 0 auto 0;
     z-index: 110;
-    transition: background 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    transition: background var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease);
     border-bottom: 1px solid transparent;
 }
 
@@ -334,7 +366,7 @@ section[id] {
 .logo {
     width: 132px;
     height: auto;
-    transition: opacity 0.25s var(--ease);
+    transition: opacity var(--dur-fast) var(--ease);
 }
 
 /* Swap variants rather than filtering: the mark has an accent-coloured J that
@@ -367,7 +399,7 @@ section[id] {
     padding: 0.4rem 0.2rem;
     font-size: var(--step-0);
     color: var(--text-muted);
-    transition: color 0.25s var(--ease);
+    transition: color var(--dur-fast) var(--ease);
 }
 
 .nav-links a::after {
@@ -379,7 +411,7 @@ section[id] {
     height: 2px;
     border-radius: 2px;
     background: var(--accent);
-    transition: width 0.3s var(--ease);
+    transition: width var(--dur-base) var(--ease);
 }
 
 .nav-links a:hover,
@@ -407,7 +439,7 @@ section[id] {
     border: 1px solid var(--border);
     color: var(--text-muted);
     background: var(--bg-elev);
-    transition: color 0.25s var(--ease), border-color 0.25s var(--ease), transform 0.25s var(--ease);
+    transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
 
 .icon-btn:hover {
@@ -436,7 +468,7 @@ section[id] {
     background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(2px);
     opacity: 0;
-    transition: opacity 0.3s var(--ease);
+    transition: opacity var(--dur-base) var(--ease);
 }
 
 .nav-backdrop.is-open {
@@ -527,7 +559,7 @@ section[id] {
     background: linear-gradient(155deg, #22222b, #0a0a0d 62%);
     border: 1px solid var(--border-strong);
     border-radius: calc(var(--radius-lg) + 8px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--edge-highlight), var(--shadow-lg);
 }
 
 .hero-portrait::after {
@@ -536,7 +568,7 @@ section[id] {
     inset: 0 0 auto 0;
     height: 1px;
     border-radius: inherit;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    background: linear-gradient(90deg, transparent, var(--accent-2), var(--accent), transparent);
     opacity: 0.55;
 }
 
@@ -703,14 +735,14 @@ section[id] {
     border-radius: var(--radius-lg);
     overflow: hidden;
     border: 1px solid var(--border);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--edge-highlight), var(--shadow-lg);
 }
 
 .about-media img {
     width: 100%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
-    transition: transform 0.7s var(--ease);
+    transition: transform var(--dur-image) var(--ease);
 }
 
 .about-media:hover img {
@@ -758,7 +790,7 @@ section[id] {
     font-weight: 500;
     color: var(--text-muted);
     white-space: nowrap;
-    transition: background 0.25s var(--ease), color 0.25s var(--ease);
+    transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
 
 .tab-link:hover {
@@ -766,7 +798,7 @@ section[id] {
 }
 
 .tab-link.is-active {
-    background: var(--accent);
+    background: var(--accent-strong);
     color: #fff;
 }
 
@@ -822,12 +854,12 @@ section[id] {
     background: var(--bg-elev);
     color: var(--text);
     font-size: var(--step--1);
-    transition: border-color 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease);
+    transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
 
 .chips li:hover {
     border-color: var(--accent);
-    color: var(--accent);
+    color: var(--accent-ink);
     transform: translateY(-2px);
 }
 
@@ -877,7 +909,7 @@ section[id] {
     display: block;
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-size: var(--step--1);
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 0.2rem;
 }
 
@@ -912,24 +944,26 @@ section[id] {
     border-radius: var(--radius-lg);
     border: 1px solid var(--border);
     background: var(--bg-elev);
+    box-shadow: var(--edge-highlight);
     overflow: hidden;
-    transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    transition: transform var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease);
 }
 
+/* Hairline uses both hues so the secondary is not decorative dead weight. */
 .card::before {
     content: '';
     position: absolute;
     inset: 0 0 auto 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    background: linear-gradient(90deg, transparent, var(--accent-2), var(--accent), transparent);
     opacity: 0;
-    transition: opacity 0.35s var(--ease);
+    transition: opacity var(--dur-base) var(--ease);
 }
 
 .card:hover {
     transform: translateY(-8px);
     border-color: var(--border-strong);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--edge-highlight), var(--shadow-lg);
 }
 
 .card:hover::before {
@@ -977,11 +1011,11 @@ section[id] {
     padding-top: var(--space-2);
     font-size: var(--step--1);
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-ink);
 }
 
 .card-link i {
-    transition: transform 0.25s var(--ease);
+    transition: transform var(--dur-fast) var(--ease);
 }
 
 .card-link:hover i {
@@ -1023,7 +1057,7 @@ section[id] {
     aspect-ratio: 2 / 3;
     object-fit: cover;
     object-position: center;
-    transition: transform 0.65s var(--ease), filter 0.45s var(--ease);
+    transition: transform var(--dur-image) var(--ease), filter var(--dur-slow) var(--ease);
 }
 
 .photo figcaption {
@@ -1033,7 +1067,7 @@ section[id] {
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.55) 35%, rgba(0, 0, 0, 0.88));
     color: #fff;
     transform: translateY(101%);
-    transition: transform 0.45s var(--ease);
+    transition: transform var(--dur-slow) var(--ease);
 }
 
 .photo figcaption h3 {
@@ -1074,11 +1108,13 @@ section[id] {
     border: 1px solid var(--border);
 }
 
+/* Landscape, because project screenshots are landscape. A 4/5 portrait frame
+   cropped away most of what makes a screenshot legible. */
 .work-media img {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
-    transition: transform 0.65s var(--ease);
+    transition: transform var(--dur-image) var(--ease);
 }
 
 .work-layer {
@@ -1093,7 +1129,7 @@ section[id] {
        so the grid is still readable on a glance and on touch screens. */
     background: linear-gradient(transparent 35%, rgba(0, 0, 0, 0.7) 72%, rgba(0, 0, 0, 0.92));
     color: #fff;
-    transition: background 0.4s var(--ease);
+    transition: background var(--dur-base) var(--ease);
 }
 
 .work-layer h3 {
@@ -1123,7 +1159,7 @@ section[id] {
     margin-top: 0.35rem;
     opacity: 0;
     transform: translateY(8px);
-    transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+    transition: opacity var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
 }
 
 .work-links a {
@@ -1135,7 +1171,7 @@ section[id] {
     background: #fff;
     color: var(--accent);
     font-size: 1rem;
-    transition: transform 0.25s var(--ease);
+    transition: transform var(--dur-fast) var(--ease);
 }
 
 .work-links a:hover {
@@ -1194,7 +1230,7 @@ section[id] {
 }
 
 .contact-list a:hover {
-    color: var(--accent);
+    color: var(--accent-ink);
 }
 
 .copy-btn {
@@ -1206,7 +1242,7 @@ section[id] {
     border: 1px solid var(--border);
     color: var(--text-dim);
     font-size: 0.8rem;
-    transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+    transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
 }
 
 .copy-btn:hover {
@@ -1236,7 +1272,7 @@ section[id] {
     background: var(--bg-elev);
     color: var(--text-muted);
     font-size: 1.05rem;
-    transition: color 0.25s var(--ease), border-color 0.25s var(--ease), transform 0.25s var(--ease);
+    transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
 
 .social-icons a:hover {
@@ -1250,7 +1286,7 @@ section[id] {
     border-radius: var(--radius-lg);
     border: 1px solid var(--border);
     background: var(--bg-elev);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--edge-highlight), var(--shadow-sm);
 }
 
 .field {
@@ -1271,7 +1307,7 @@ section[id] {
     border-radius: var(--radius);
     outline: none;
     resize: vertical;
-    transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
 }
 
 .field label {
@@ -1282,13 +1318,13 @@ section[id] {
     color: var(--text-dim);
     pointer-events: none;
     transform-origin: left top;
-    transition: transform 0.2s var(--ease), color 0.2s var(--ease);
+    transition: transform var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
 
 .field input:focus,
 .field textarea:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 4px var(--accent-soft);
+    box-shadow: var(--focus-ring);
 }
 
 .field input:focus+label,
@@ -1296,7 +1332,7 @@ section[id] {
 .field input:not(:placeholder-shown)+label,
 .field textarea:not(:placeholder-shown)+label {
     transform: translateY(-0.72rem) scale(0.78);
-    color: var(--accent);
+    color: var(--accent-ink);
 }
 
 .field.has-error input,
@@ -1402,13 +1438,13 @@ section[id] {
     width: 46px;
     height: 46px;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--accent-strong);
     color: #fff;
-    box-shadow: 0 12px 28px -12px var(--accent-ring);
+    box-shadow: var(--glow);
     opacity: 0;
     visibility: hidden;
     transform: translateY(12px);
-    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s;
+    transition: opacity var(--dur-base) var(--ease), transform var(--dur-base) var(--ease), visibility var(--dur-base);
 }
 
 .to-top.is-visible {
@@ -1437,7 +1473,7 @@ section[id] {
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     opacity: 0;
-    transition: opacity 0.3s var(--ease);
+    transition: opacity var(--dur-base) var(--ease);
 }
 
 .lightbox[hidden] {
@@ -1462,7 +1498,7 @@ section[id] {
     max-height: 74svh;
     width: auto;
     border-radius: var(--radius);
-    box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.9);
+    box-shadow: var(--shadow-xl);
     animation: lb-in 0.35s var(--ease) both;
 }
 
@@ -1514,7 +1550,7 @@ section[id] {
     background: rgba(255, 255, 255, 0.08);
     color: #fff;
     font-size: 1.05rem;
-    transition: background 0.25s var(--ease), border-color 0.25s var(--ease), transform 0.25s var(--ease);
+    transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
 
 .lightbox-close:hover,
@@ -1551,7 +1587,7 @@ section[id] {
 .js .reveal {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+    transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
     transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -1621,7 +1657,7 @@ section[id] {
         border-left: 1px solid var(--border);
         box-shadow: var(--shadow-lg);
         transform: translateX(100%);
-        transition: transform 0.35s var(--ease);
+        transition: transform var(--dur-base) var(--ease);
         overflow-y: auto;
     }
 
