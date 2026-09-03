@@ -1,0 +1,27 @@
+{
+  "name": "Jagdish Sahoo — Lead Software Engineer",
+  "short_name": "Jagdish",
+  "description": "Portfolio of Jagdish Sahoo, Lead Software Engineer working with Java, Spring Boot and AWS.",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#08080a",
+  "background_color": "#08080a",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
