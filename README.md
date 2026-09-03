@@ -1,6 +1,6 @@
 # Jagdish Sahoo
 
-**Lead Software Engineer** · India, open to remote
+**Senior Software Development Engineer** · India, open to remote
 
 I build enterprise Java and Spring Boot microservices, React frontends and AWS
 cloud systems that stay fast under real traffic.

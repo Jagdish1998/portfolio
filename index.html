@@ -75,7 +75,7 @@
             </a>
 
             <nav id="primary-nav" aria-label="Primary">
-                <button class="nav-close" type="button" aria-label="Close menu">
+                <button class="nav-close icon-btn" type="button" aria-label="Close menu">
                     <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
                 <ul class="nav-links">
@@ -91,7 +91,11 @@
 
             <div class="nav-actions">
                 <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to light theme">
-                    <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                    <!-- Shows the theme you will switch TO, so the icon agrees with
+                         the aria-label. Swapped in CSS rather than JS so it is already
+                         correct on first paint. -->
+                    <i class="fa-solid fa-sun theme-icon-sun" aria-hidden="true"></i>
+                    <i class="fa-solid fa-moon theme-icon-moon" aria-hidden="true"></i>
                 </button>
                 <button class="icon-btn nav-open" id="nav-open" type="button" aria-label="Open menu"
                     aria-expanded="false" aria-controls="primary-nav">
