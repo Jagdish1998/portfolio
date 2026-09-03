@@ -11,7 +11,7 @@ cloud systems that stay fast under real traffic.
 
 ## Profile
 
-Experienced Software Development Engineer with around 4.3 years developing
+Senior Software Development Engineer with around 4.3 years developing
 enterprise Java and Spring Boot microservices, React frontends and AWS cloud
 solutions using Docker, ECS and EC2 across financial services and e-commerce
 platforms.
