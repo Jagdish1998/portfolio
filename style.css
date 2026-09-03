@@ -96,7 +96,10 @@ html {
 body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-size: var(--step-0);
     line-height: 1.7;
     overflow-x: hidden;
@@ -225,6 +228,13 @@ section[id] {
 
 .accent {
     color: var(--accent);
+}
+
+/* Fixed-width digits so the animated counters do not reflow as the numbers
+   tick up through different-width glyphs. */
+.counter {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
 }
 
 /* ============================================================
@@ -586,6 +596,8 @@ section[id] {
 .hero-title {
     font-size: var(--step-5);
     font-weight: 700;
+    /* Inter needs tighter tracking than a geometric sans at display sizes. */
+    letter-spacing: -0.035em;
     margin-bottom: var(--space-4);
 }
 
