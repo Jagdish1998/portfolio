@@ -184,7 +184,7 @@ section[id] {
    header when a nav link jumps here, so it stays tight; bottom padding carries
    the separation between sections while scrolling. */
 .section {
-    padding-top: clamp(2rem, 3.4vw, 3.25rem);
+    padding-top: clamp(1.5rem, 2.2vw, 2.25rem);
     padding-bottom: clamp(3rem, 5vw, 4.75rem);
 }
 
@@ -421,7 +421,10 @@ section[id] {
    ============================================================ */
 .hero {
     position: relative;
-    min-height: 100svh;
+    /* Capped rather than a full 100svh: on a tall screen a full-viewport hero
+       left the content floating with hundreds of px of blank space above and
+       below it (642px at 820x1180, 540px at 1080p). */
+    min-height: min(100svh, 800px);
     display: flex;
     align-items: center;
     padding: calc(var(--header-h) + 2rem) 0 3.5rem;
@@ -693,8 +696,16 @@ section[id] {
     pointer-events: none;
 }
 
-.about-body .lede {
-    margin-bottom: var(--space-6);
+/* The summary now lives in its own tab, so the tab strip aligns with the top
+   of the photo. Panel heights vary a lot (the skills panel is ~690px, the
+   summary ~110px), so a min-height stops the layout jumping between tabs. */
+.tab-panel {
+    min-height: clamp(200px, 23vw, 360px);
+}
+
+#panel-summary .lede {
+    font-size: var(--step-1);
+    margin-bottom: 0;
 }
 
 /* tabs */
@@ -750,8 +761,14 @@ section[id] {
     }
 }
 
+/* Tightened: across seven groups the old spacing pushed the skills panel to
+   ~690px, far taller than the photo beside it. */
 .skill-group {
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-4);
+}
+
+.skill-group:last-child {
+    margin-bottom: 0;
 }
 
 .skill-group h3 {
@@ -760,7 +777,7 @@ section[id] {
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--text-dim);
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-2);
 }
 
 .chips {
@@ -849,9 +866,10 @@ section[id] {
    Cards (coding profiles + services)
    ============================================================ */
 .card-grid {
+    --grid-gap: clamp(1.25rem, 2.5vw, 2rem);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
-    gap: clamp(1.25rem, 2.5vw, 2rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--grid-gap);
 }
 
 .card {
@@ -1014,9 +1032,10 @@ section[id] {
    Work
    ============================================================ */
 .work-grid {
+    --grid-gap: clamp(1.25rem, 2.5vw, 2rem);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
-    gap: clamp(1.25rem, 2.5vw, 2rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--grid-gap);
 }
 
 .work-media {
@@ -1198,7 +1217,7 @@ section[id] {
 }
 
 .contact-form-wrap {
-    padding: clamp(1.5rem, 3vw, 2.5rem);
+    padding: clamp(1.35rem, 2.4vw, 2rem);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border);
     background: var(--bg-elev);
@@ -1207,7 +1226,8 @@ section[id] {
 
 .field {
     position: relative;
-    margin-bottom: var(--space-5);
+    /* Gap leaves room for the absolutely positioned error message below. */
+    margin-bottom: 1.6rem;
 }
 
 .field input,
@@ -1255,11 +1275,14 @@ section[id] {
     border-color: var(--error);
 }
 
+/* Taken out of flow: reserving a line under all three fields added ~54px of
+   permanently empty space to a form that already overflowed the viewport. */
 .field-error {
-    display: block;
-    min-height: 1.15rem;
-    margin-top: 0.3rem;
+    position: absolute;
+    top: 100%;
+    left: 0.2rem;
     font-size: 0.82rem;
+    line-height: 1.35;
     color: var(--error);
 }
 
@@ -1524,6 +1547,20 @@ section[id] {
     .gallery {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+
+    .card-grid,
+    .work-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Three cards in two columns leaves a hole on the right. Centre the odd one
+       out at its column width so the row reads as intentional. */
+    .card-grid > :last-child:nth-child(3),
+    .work-grid > :last-child:nth-child(3) {
+        grid-column: 1 / -1;
+        width: calc(50% - (var(--grid-gap) / 2));
+        margin-inline: auto;
+    }
 }
 
 @media (max-width: 900px) {
@@ -1621,6 +1658,19 @@ section[id] {
        gallery alone taller than the rest of the page combined. */
     .gallery {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card-grid,
+    .work-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    /* Single column, so the orphan-centring rule no longer applies. */
+    .card-grid > :last-child:nth-child(3),
+    .work-grid > :last-child:nth-child(3) {
+        grid-column: auto;
+        width: auto;
+        margin-inline: 0;
     }
 
     /* Tiles are ~160px wide here; the title alone is enough. The full
