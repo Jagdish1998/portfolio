@@ -930,6 +930,9 @@ section[id] {
     --grid-gap: clamp(1.25rem, 2.5vw, 2rem);
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* Rows are auto-sized by default, so each row matches only its own tallest
+       card and rows end up different heights. 1fr equalises every row. */
+    grid-auto-rows: 1fr;
     gap: var(--grid-gap);
 }
 
@@ -1410,6 +1413,26 @@ section[id] {
     color: var(--error);
 }
 
+.form-fallback {
+    margin-top: var(--space-2);
+    text-align: center;
+    font-size: var(--step--1);
+}
+
+.form-fallback a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 500;
+    color: var(--accent-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.form-fallback a:hover {
+    color: var(--accent);
+}
+
 /* ============================================================
    Footer + back to top
    ============================================================ */
@@ -1731,6 +1754,12 @@ section[id] {
     .card-grid,
     .work-grid {
         grid-template-columns: minmax(0, 1fr);
+    }
+
+    /* Single column: equal rows would stretch every card to the tallest one,
+       wasting a lot of vertical space on a phone. */
+    .card-grid {
+        grid-auto-rows: auto;
     }
 
     /* Single column, so the orphan-centring rule no longer applies. */

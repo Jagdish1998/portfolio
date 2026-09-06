@@ -504,7 +504,9 @@
 
         var status = document.getElementById('form-status');
         var submitBtn = document.getElementById('submit-btn');
-        var honeypot = form.elements['Company'];
+        var honeypot = form.elements['_hp'];
+        var fallback = document.getElementById('form-fallback');
+        var mailto = document.getElementById('form-mailto');
         var lastSent = 0;
 
         // Google Apps Script endpoint. Anything posted here lands in the sheet,
@@ -561,6 +563,21 @@
             status.className = 'form-status' + (kind ? ' is-' + kind : '');
         }
 
+        // If the endpoint is unreachable, offer the same message as a prefilled
+        // email so the visitor is not left with a form that simply fails.
+        function showMailtoFallback() {
+            if (!fallback || !mailto) return;
+            var name = (form.elements['Name'].value || '').trim();
+            var body = (form.elements['Message'].value || '').trim();
+            var from = (form.elements['Email'].value || '').trim();
+            var subject = 'Portfolio enquiry' + (name ? ' from ' + name : '');
+            var lines = body + (from ? '\n\n-- \n' + name + '\n' + from : '');
+            mailto.href = 'mailto:jagdish.cet.edu@gmail.com'
+                + '?subject=' + encodeURIComponent(subject)
+                + '&body=' + encodeURIComponent(lines);
+            fallback.hidden = false;
+        }
+
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
@@ -597,6 +614,7 @@
             submitBtn.disabled = true;
             submitBtn.classList.add('is-loading');
             setStatus('Sending your message…', '');
+            if (fallback) fallback.hidden = true;
 
             fetch(scriptURL, { method: 'POST', body: new FormData(form) })
                 .then(function (response) {
@@ -609,7 +627,8 @@
                     });
                 })
                 .catch(function () {
-                    setStatus('Something went wrong. Please email jagdish.cet.edu@gmail.com directly.', 'error');
+                    setStatus('The message could not be sent right now.', 'error');
+                    showMailtoFallback();
                 })
                 .finally(function () {
                     submitBtn.disabled = false;

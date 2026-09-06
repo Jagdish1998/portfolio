@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://jagdish1998.github.io/portfolio/">
     <meta property="og:image" content="https://jagdish1998.github.io/portfolio/images/opt/user-800.jpg">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Jagdish Sahoo — Lead Software Engineer">
+    <meta property="og:title" content="Jagdish Sahoo — Senior Software Development Engineer">
     <meta property="og:description"
         content="Enterprise Java and Spring Boot microservices, React frontends and AWS cloud solutions.">
     <meta name="twitter:card" content="summary_large_image">
@@ -83,7 +83,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#coding-profiles">Coding</a></li>
                     <li><a href="#photography">Photography</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="#services">Expertise</a></li>
                     <li><a href="#portfolio">Work</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -525,43 +525,66 @@
         <!-- ============ services ============ -->
         <section id="services" class="section section-alt">
             <div class="container">
-                <p class="section-eyebrow reveal">04 — Services</p>
-                <h2 class="section-title reveal">What I Do</h2>
+                <p class="section-eyebrow reveal">04 — Expertise</p>
+                <h2 class="section-title reveal">What I Work On</h2>
+                <p class="section-lede reveal">Hands-on engineering across the backend and the infrastructure it runs
+                    on, built for enterprise financial services and e-commerce platforms.</p>
 
+                <!--
+                  Six cards: the grid is three columns, so 3 or 6 lay out cleanly.
+                  The old "Learn more" links pointed at IBM docs, GeeksForGeeks and
+                  estuary.dev, which sent visitors off the site and read as "I have
+                  read about this" rather than "I build this". Removed rather than
+                  replaced; swap in links to real repos when there are some.
+                -->
                 <div class="card-grid">
                     <article class="card reveal">
-                        <i class="fa-solid fa-code card-icon" aria-hidden="true"></i>
-                        <h3>REST API Design &amp; Integration</h3>
-                        <p>Resource-oriented services built on stateless communication and standard HTTP semantics, so
-                            the contract stays maintainable as the surface grows.</p>
-                        <a class="card-link"
-                            href="https://www.ibm.com/docs/en/zos-connect/zosconnect/3.0?topic=apis-restful-web-services-api-design"
-                            target="_blank" rel="noopener noreferrer">
-                            Learn more <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                        </a>
+                        <i class="fa-solid fa-server card-icon" aria-hidden="true"></i>
+                        <h3>Java &amp; Spring Boot Services</h3>
+                        <p>Building and maintaining REST APIs with Spring Boot, JPA and Hibernate, keeping the contract
+                            stable as consumers grow.</p>
                     </article>
 
                     <article class="card reveal">
                         <i class="fa-solid fa-shield-halved card-icon" aria-hidden="true"></i>
-                        <h3>Spring Security Implementation</h3>
-                        <p>Authentication and authorisation via configurable filter chains, role-based access control,
-                            password encoding and CSRF protection.</p>
-                        <a class="card-link" href="https://www.geeksforgeeks.org/spring-security-tutorial/"
-                            target="_blank" rel="noopener noreferrer">
-                            Learn more <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                        </a>
+                        <h3>API Security &amp; Access Control</h3>
+                        <p>Authentication and authorisation with Spring Security, JWT and OAuth2, including role-based
+                            access, password encoding and CSRF protection.</p>
                     </article>
 
                     <article class="card reveal">
                         <i class="fa-solid fa-tower-broadcast card-icon" aria-hidden="true"></i>
-                        <h3>Event-Driven Systems with Kafka</h3>
-                        <p>Asynchronous publish and subscribe pipelines that keep services loosely coupled and fault
-                            tolerant when a consumer needs to catch up.</p>
-                        <a class="card-link" href="https://estuary.dev/kafka-event-driven-architecture/" target="_blank"
-                            rel="noopener noreferrer">
-                            Learn more <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                        </a>
+                        <h3>Event-Driven Services</h3>
+                        <p>Kafka producers and consumers for asynchronous workflows, keeping services loosely coupled
+                            and able to catch up after downtime.</p>
                     </article>
+
+                    <article class="card reveal">
+                        <i class="fa-solid fa-cloud card-icon" aria-hidden="true"></i>
+                        <h3>AWS Cloud Services</h3>
+                        <p>Running services on EC2, ECS and EKS with IAM, VPC, Route53 and CloudFront, and watching them
+                            in production through CloudWatch.</p>
+                    </article>
+
+                    <article class="card reveal">
+                        <i class="fa-solid fa-code-branch card-icon" aria-hidden="true"></i>
+                        <h3>CI/CD &amp; Containers</h3>
+                        <p>Dockerising services and automating build, test and release through Jenkins and AWS
+                            CodePipeline.</p>
+                    </article>
+
+                    <article class="card reveal">
+                        <i class="fa-solid fa-database card-icon" aria-hidden="true"></i>
+                        <h3>Databases &amp; Data Access</h3>
+                        <p>Schema and query work across PostgreSQL, MySQL and DynamoDB, with the data access layer
+                            written to keep reads predictable.</p>
+                    </article>
+                </div>
+
+                <div class="section-action reveal">
+                    <a href="#contact" class="btn btn-ghost">
+                        Let's talk about your team <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </section>
@@ -747,10 +770,13 @@
                                 <small class="field-error" id="err-message"></small>
                             </div>
 
-                            <!-- Honeypot: hidden from users, bots tend to fill it. -->
+                            <!-- Honeypot: hidden from users, bots tend to fill it. Deliberately
+                                 named _hp rather than something like "Company", which browsers
+                                 will happily autofill even with autocomplete="off" - that would
+                                 make a real submission look like a bot and be silently dropped. -->
                             <div class="honeypot" aria-hidden="true">
-                                <label for="field-company">Company</label>
-                                <input type="text" id="field-company" name="Company" tabindex="-1" autocomplete="off">
+                                <label for="field-hp">Leave this field empty</label>
+                                <input type="text" id="field-hp" name="_hp" tabindex="-1" autocomplete="off">
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
@@ -759,6 +785,13 @@
                             </button>
                         </form>
                         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+                        <!-- Shown only if the send fails, so the form is never a dead end. -->
+                        <p class="form-fallback" id="form-fallback" hidden>
+                            <a id="form-mailto" href="mailto:jagdish.cet.edu@gmail.com">
+                                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                                Send it as an email instead
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>
