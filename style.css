@@ -1100,6 +1100,9 @@ section[id] {
 /* ============================================================
    Work
    ============================================================ */
+/* Three projects, three columns. The overlay is bottom-aligned with no overflow
+   handling, so a description long enough to outgrow the card would push the
+   title out of the top of the frame. Keep card copy to roughly two sentences. */
 .work-grid {
     --grid-gap: clamp(1.25rem, 2.5vw, 2rem);
     display: grid;
