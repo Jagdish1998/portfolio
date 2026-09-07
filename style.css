@@ -1100,13 +1100,13 @@ section[id] {
 /* ============================================================
    Work
    ============================================================ */
-/* Three projects, three columns. The overlay is bottom-aligned with no overflow
+/* Four projects in a 2x2 grid. The overlay is bottom-aligned with no overflow
    handling, so a description long enough to outgrow the card would push the
    title out of the top of the frame. Keep card copy to roughly two sentences. */
 .work-grid {
     --grid-gap: clamp(1.25rem, 2.5vw, 2rem);
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--grid-gap);
 }
 
@@ -1644,15 +1644,16 @@ section[id] {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .card-grid,
-    .work-grid {
+    .card-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* Three cards in two columns leaves a hole on the right. Centre the odd one
-       out at its column width so the row reads as intentional. */
-    .card-grid > :last-child:nth-child(3),
-    .work-grid > :last-child:nth-child(3) {
+    /* work-grid is already 2x2 at every width from here up, so it needs nothing.
+
+       Three cards in two columns leaves a hole on the right. Centre the odd one
+       out at its column width so the row reads as intentional. Only card-grid
+       has three items now; work-grid has four and tiles evenly. */
+    .card-grid > :last-child:nth-child(3) {
         grid-column: 1 / -1;
         width: calc(50% - (var(--grid-gap) / 2));
         margin-inline: auto;
@@ -1766,8 +1767,7 @@ section[id] {
     }
 
     /* Single column, so the orphan-centring rule no longer applies. */
-    .card-grid > :last-child:nth-child(3),
-    .work-grid > :last-child:nth-child(3) {
+    .card-grid > :last-child:nth-child(3) {
         grid-column: auto;
         width: auto;
         margin-inline: 0;
