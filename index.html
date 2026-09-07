@@ -591,9 +591,16 @@
 
         <!-- ============ portfolio ============ -->
         <!--
-          TODO (Jagdish): these three cards are structure-only placeholders.
-          Replace the titles, descriptions, tech tags and both links with your
-          real projects, and swap images/opt/work-*-800.jpg for real screenshots.
+          TODO (Jagdish): work-3 is a real capture of the deployed site. The
+          other two are still placeholder renders. Swap work-1-800.jpg for the
+          order-saga chaos console mid-compensation, and work-2-800.jpg for a
+          sql-guard-mcp refusal in an MCP client. See the README for the headless
+          Edge command that produced work-3.
+
+          Headings are the readable form of the repo name, not the slug, which
+          is why they are title case here and lower case on GitHub. Only
+          linkedin-optimiser is deployed, so it is the only card with a second
+          demo link; add the same anchor to the others once they have a URL.
         -->
         <section id="portfolio" class="section">
             <div class="container">
@@ -603,24 +610,24 @@
                 <div class="work-grid">
                     <article class="work reveal">
                         <div class="work-media">
-                            <img src="images/opt/work-1-800.jpg" alt="Screenshot of the order processing service"
+                            <img src="images/opt/work-1-800.jpg"
+                                alt="The order-saga chaos console, showing a saga compensating after a payment failure"
                                 width="650" height="800" loading="lazy" decoding="async">
                             <div class="work-layer">
-                                <h3>Order Processing Service</h3>
-                                <p>Event-driven order pipeline with idempotent consumers and retry handling.</p>
+                                <h3>Order Saga</h3>
+                                <p>An event-driven order pipeline you can break on purpose. Transactional outbox,
+                                    idempotent consumers and compensating transactions, watched live in a chaos
+                                    console.</p>
                                 <ul class="chips chips-sm">
                                     <li>Spring Boot</li>
                                     <li>Kafka</li>
                                     <li>PostgreSQL</li>
+                                    <li>Testcontainers</li>
                                 </ul>
                                 <div class="work-links">
-                                    <a href="https://github.com/Jagdish1998" target="_blank" rel="noopener noreferrer"
-                                        aria-label="Order Processing Service source on GitHub">
+                                    <a href="https://github.com/Jagdish1998/order-saga" target="_blank"
+                                        rel="noopener noreferrer" aria-label="Order Saga source on GitHub">
                                         <i class="fa-brands fa-github" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="https://github.com/Jagdish1998" target="_blank" rel="noopener noreferrer"
-                                        aria-label="Order Processing Service live demo">
-                                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                                     </a>
                                 </div>
                             </div>
@@ -629,25 +636,24 @@
 
                     <article class="work reveal">
                         <div class="work-media">
-                            <img src="images/opt/work-2-800.jpg" alt="Screenshot of the authentication gateway"
+                            <img src="images/opt/work-2-800.jpg"
+                                alt="sql-guard-mcp refusing a data-modifying query and explaining which rule it broke"
                                 width="650" height="800" loading="lazy" decoding="async">
                             <div class="work-layer">
-                                <h3>Authentication Gateway</h3>
-                                <p>Centralised JWT and OAuth2 gateway issuing short-lived tokens for downstream
-                                    services.</p>
+                                <h3>SQL Guard MCP</h3>
+                                <p>An MCP server that lets a language model query a database without being able to
+                                    damage it. Read-only enforced by real SQL parsing, planner cost limits and PII
+                                    masking.</p>
                                 <ul class="chips chips-sm">
-                                    <li>Spring Security</li>
-                                    <li>JWT</li>
-                                    <li>OAuth2</li>
+                                    <li>Spring AI</li>
+                                    <li>MCP</li>
+                                    <li>JSqlParser</li>
+                                    <li>PostgreSQL</li>
                                 </ul>
                                 <div class="work-links">
-                                    <a href="https://github.com/Jagdish1998" target="_blank" rel="noopener noreferrer"
-                                        aria-label="Authentication Gateway source on GitHub">
+                                    <a href="https://github.com/Jagdish1998/sql-guard-mcp" target="_blank"
+                                        rel="noopener noreferrer" aria-label="SQL Guard MCP source on GitHub">
                                         <i class="fa-brands fa-github" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="https://github.com/Jagdish1998" target="_blank" rel="noopener noreferrer"
-                                        aria-label="Authentication Gateway live demo">
-                                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                                     </a>
                                 </div>
                             </div>
@@ -656,23 +662,26 @@
 
                     <article class="work reveal">
                         <div class="work-media">
-                            <img src="images/opt/work-3-800.jpg" alt="Screenshot of the container deployment pipeline"
-                                width="650" height="800" loading="lazy" decoding="async">
+                            <img src="images/opt/work-3-800.jpg"
+                                alt="A LinkedIn Optimiser report card scoring a profile 93 out of 100, grade A, with first impression, story and searchability scored separately"
+                                width="640" height="800" loading="lazy" decoding="async">
                             <div class="work-layer">
-                                <h3>Container Deployment Pipeline</h3>
-                                <p>Build, test and release workflow shipping Docker images to AWS ECS.</p>
+                                <h3>LinkedIn Optimiser</h3>
+                                <p>Scores a LinkedIn profile against 39 readable rules and returns copy-ready fixes.
+                                    No account, no upload, no LLM: the whole engine runs in the browser.</p>
                                 <ul class="chips chips-sm">
-                                    <li>Docker</li>
-                                    <li>Jenkins</li>
-                                    <li>AWS ECS</li>
+                                    <li>TypeScript</li>
+                                    <li>React</li>
+                                    <li>Vite</li>
+                                    <li>Vitest</li>
                                 </ul>
                                 <div class="work-links">
-                                    <a href="https://github.com/Jagdish1998" target="_blank" rel="noopener noreferrer"
-                                        aria-label="Container Deployment Pipeline source on GitHub">
+                                    <a href="https://github.com/Jagdish1998/linkedin-optimiser" target="_blank"
+                                        rel="noopener noreferrer" aria-label="LinkedIn Optimiser source on GitHub">
                                         <i class="fa-brands fa-github" aria-hidden="true"></i>
                                     </a>
-                                    <a href="https://github.com/Jagdish1998" target="_blank" rel="noopener noreferrer"
-                                        aria-label="Container Deployment Pipeline live demo">
+                                    <a href="https://jagdish1998.github.io/linkedin-optimiser/" target="_blank"
+                                        rel="noopener noreferrer" aria-label="LinkedIn Optimiser live demo">
                                         <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                                     </a>
                                 </div>

@@ -126,6 +126,30 @@ modified and the output is committed, so the site needs no build step.
 powershell -ExecutionPolicy Bypass -File .\optimize-images.ps1
 ```
 
+### Project screenshots
+
+Headless Edge captures these, at 2x so the downscale to 800px is sharp:
+
+```powershell
+& "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" `
+  --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=2 `
+  --window-size=1440,900 --virtual-time-budget=12000 `
+  --screenshot="$env:TEMP\shot.png" `
+  "https://jagdish1998.github.io/linkedin-optimiser/"
+```
+
+Two things that are easy to get wrong. Capture at a desktop viewport width, not a
+portrait one: 1000px collapses that hero into a single column, so the shot shows a
+layout no visitor on a laptop ever sees. And keep `--virtual-time-budget`, or the
+shot can land before webfonts and entrance animations have settled.
+
+Then crop rather than shrink. A whole page scaled into a 650px card reads as a
+screenshot of a website; one component filling the frame reads as a product.
+`images/work-3.png` is the hero's report card cropped to 4:5 with about 14% padding,
+sitting slightly high in the frame so the stacked card behind it stays in shot.
+Regenerate the `-800` variant afterwards; the work sources only need that one size,
+since the cards never load them larger.
+
 ### Notes on decisions worth keeping
 
 - **Images.** Originals total 44.6MB; generated variants are 5.7MB. The gallery
@@ -158,8 +182,12 @@ assistive technology.
 
 ### Work remaining
 
-- The three cards under Selected Projects are placeholders needing real
-  projects, screenshots and links.
+- Selected Projects points at [order-saga](https://github.com/Jagdish1998/order-saga),
+  [sql-guard-mcp](https://github.com/Jagdish1998/sql-guard-mcp) and
+  [linkedin-optimiser](https://github.com/Jagdish1998/linkedin-optimiser). Only the
+  third card has a real screenshot; the first two are still placeholder renders.
+- Only linkedin-optimiser has a live demo link. order-saga and sql-guard-mcp need
+  one once they are deployed.
 - `og:url` and `og:image` in `index.html` need the final deployed URL.
 - Font Awesome ships about 273KB of webfonts for 24 icons; inline SVG would be
   the largest remaining performance win.
