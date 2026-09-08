@@ -591,11 +591,14 @@
 
         <!-- ============ portfolio ============ -->
         <!--
-          TODO (Jagdish): work-3 is a real capture of the deployed site. The
-          other two are still placeholder renders. Swap work-1-800.jpg for the
-          order-saga chaos console mid-compensation, and work-2-800.jpg for a
-          sql-guard-mcp refusal in an MCP client. See the README for the headless
-          Edge command that produced work-3.
+          TODO (Jagdish): image numbers follow card order, so inserting a card
+          means renumbering the ones after it. work-3 and work-6 are real
+          captures. work-1 and work-2 are still placeholder renders: swap
+          work-1-800.jpg for the order-saga chaos console mid-compensation, and
+          work-2-800.jpg for a sql-guard-mcp refusal in an MCP client. work-4 and
+          work-5 are generated tiles, since llm-gateway is an API with no UI and
+          job-tracker has no dashboard yet. See the README for the headless Edge
+          command.
 
           Headings are the readable form of the repo name, not the slug, which
           is why they are title case here and lower case on GitHub. Only
@@ -683,6 +686,83 @@
                                     <a href="https://jagdish1998.github.io/linkedin-optimiser/" target="_blank"
                                         rel="noopener noreferrer" aria-label="LinkedIn Optimiser live demo">
                                         <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="work reveal">
+                        <div class="work-media">
+                            <img src="images/opt/work-4-800.jpg"
+                                alt="An abstract graphic of an open circuit breaker ring above six descending stage bars"
+                                width="640" height="800" loading="lazy" decoding="async">
+                            <div class="work-layer">
+                                <h3>LLM Gateway</h3>
+                                <p>The operational layer an LLM provider does not give you: per-tenant token budgets,
+                                    response caching, retry inside a circuit breaker, and cost attribution per
+                                    tenant.</p>
+                                <ul class="chips chips-sm">
+                                    <li>Spring Boot</li>
+                                    <li>Redis</li>
+                                    <li>Resilience4j</li>
+                                    <li>SSE</li>
+                                </ul>
+                                <div class="work-links">
+                                    <a href="https://github.com/Jagdish1998/llm-gateway" target="_blank"
+                                        rel="noopener noreferrer" aria-label="LLM Gateway source on GitHub">
+                                        <i class="fa-brands fa-github" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="work reveal">
+                        <div class="work-media">
+                            <img src="images/opt/work-5-800.jpg"
+                                alt="An abstract graphic of four event log partitions, their offsets filling from left to right"
+                                width="640" height="800" loading="lazy" decoding="async">
+                            <div class="work-layer">
+                                <h3>Job Tracker</h3>
+                                <p>Ingests application email from Gmail and classifies it with an LLM that proposes
+                                    rather than decides. Status is derived from an append-only event log, never
+                                    overwritten.</p>
+                                <ul class="chips chips-sm">
+                                    <li>Spring Boot</li>
+                                    <li>Kafka</li>
+                                    <li>OAuth2</li>
+                                    <li>Flyway</li>
+                                </ul>
+                                <div class="work-links">
+                                    <a href="https://github.com/Jagdish1998/job-tracker" target="_blank"
+                                        rel="noopener noreferrer" aria-label="Job Tracker source on GitHub">
+                                        <i class="fa-brands fa-github" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="work reveal">
+                        <div class="work-media">
+                            <img src="images/opt/work-6-800.jpg"
+                                alt="The hero section of this portfolio site, showing its dark theme and portrait"
+                                width="640" height="800" loading="lazy" decoding="async">
+                            <div class="work-layer">
+                                <h3>This Portfolio</h3>
+                                <p>The site you are reading. Hand-written HTML, CSS and JavaScript with no framework
+                                    and no build step, and a gallery that went from 33MB to 521KB.</p>
+                                <ul class="chips chips-sm">
+                                    <li>HTML5</li>
+                                    <li>CSS3</li>
+                                    <li>JavaScript</li>
+                                    <li>GitHub Pages</li>
+                                </ul>
+                                <div class="work-links">
+                                    <a href="https://github.com/Jagdish1998/portfolio" target="_blank"
+                                        rel="noopener noreferrer" aria-label="This portfolio's source on GitHub">
+                                        <i class="fa-brands fa-github" aria-hidden="true"></i>
                                     </a>
                                 </div>
                             </div>

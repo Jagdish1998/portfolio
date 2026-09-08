@@ -1100,14 +1100,31 @@ section[id] {
 /* ============================================================
    Work
    ============================================================ */
-/* Three projects, three columns. The overlay is bottom-aligned with no overflow
-   handling, so a description long enough to outgrow the card would push the
-   title out of the top of the frame. Keep card copy to roughly two sentences. */
+/* Three per row, but on six tracks with each card spanning two. The card width
+   works out identical to a three-track grid, and it buys one thing three tracks
+   cannot do: a trailing row of two can start one track in and sit centred rather
+   than hanging off the left edge.
+
+   The overlay is bottom-aligned with no overflow handling, so a description long
+   enough to outgrow the card pushes the title out of the top of the frame. Keep
+   card copy to roughly two sentences. */
 .work-grid {
     --grid-gap: clamp(1.25rem, 2.5vw, 2rem);
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: var(--grid-gap);
+}
+
+.work {
+    grid-column: span 2;
+}
+
+/* Five cards: the fourth opens the last row with one card to follow. Restate the
+   span rather than setting grid-column-start alone, because the shorthand above
+   puts "span 2" in the start slot, and overriding only the start would leave the
+   end at auto and collapse the card to a single track. */
+.work-grid > .work:nth-child(3n + 1):nth-last-child(2) {
+    grid-column: 2 / span 2;
 }
 
 .work-media {
@@ -1644,18 +1661,34 @@ section[id] {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .card-grid,
-    .work-grid {
+    .card-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Two per row: four tracks, cards still spanning two. */
+    .work-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     /* Three cards in two columns leaves a hole on the right. Centre the odd one
        out at its column width so the row reads as intentional. */
-    .card-grid > :last-child:nth-child(3),
-    .work-grid > :last-child:nth-child(3) {
+    .card-grid > :last-child:nth-child(3) {
         grid-column: 1 / -1;
         width: calc(50% - (var(--grid-gap) / 2));
         margin-inline: auto;
+    }
+
+    /* The trailing-pair nudge is a three-per-row fix and does not apply here. Back
+       to a plain two-track span, not grid-column-start: auto, which would drop the
+       span and leave the card one track wide. */
+    .work-grid > .work:nth-child(3n + 1):nth-last-child(2) {
+        grid-column: span 2;
+    }
+
+    /* An odd number of cards leaves the last one alone on its row. Two tracks in
+       gets it centred at one card's width, no width or margin override needed. */
+    .work-grid > .work:last-child:nth-child(odd) {
+        grid-column: 2 / span 2;
     }
 }
 
@@ -1754,9 +1787,14 @@ section[id] {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .card-grid,
-    .work-grid {
+    .card-grid {
         grid-template-columns: minmax(0, 1fr);
+    }
+
+    /* One per row. Two tracks rather than one, because the cards span two and a
+       single explicit track would make the grid generate an implicit second. */
+    .work-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     /* Single column: equal rows would stretch every card to the tallest one,
@@ -1766,11 +1804,16 @@ section[id] {
     }
 
     /* Single column, so the orphan-centring rule no longer applies. */
-    .card-grid > :last-child:nth-child(3),
-    .work-grid > :last-child:nth-child(3) {
+    .card-grid > :last-child:nth-child(3) {
         grid-column: auto;
         width: auto;
         margin-inline: 0;
+    }
+
+    /* Likewise one per row here, so nothing is orphaned and nothing needs a nudge. */
+    .work-grid > .work:last-child:nth-child(odd),
+    .work-grid > .work:nth-child(3n + 1):nth-last-child(2) {
+        grid-column: span 2;
     }
 
     /* Tiles are ~160px wide here; the title alone is enough. The full

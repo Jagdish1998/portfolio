@@ -147,8 +147,18 @@ Then crop rather than shrink. A whole page scaled into a 650px card reads as a
 screenshot of a website; one component filling the frame reads as a product.
 `images/work-3.png` is the hero's report card cropped to 4:5 with about 14% padding,
 sitting slightly high in the frame so the stacked card behind it stays in shot.
-Regenerate the `-800` variant afterwards; the work sources only need that one size,
-since the cards never load them larger.
+`images/work-5.png` is a full-height 4:5 slice of this site's own hero, anchored
+right of centre so the portrait is in frame rather than cut in half. Regenerate the
+`-800` variant afterwards; the work sources only need that one size, since the cards
+never load them larger.
+
+`work-4` and `work-5` are the exception: generated tiles rather than screenshots,
+because llm-gateway is an API and job-tracker has no dashboard yet. Both are dark
+gradients in the site palette with a motif drawn on top, one an open circuit breaker
+over descending stage bars and the other event-log lanes filling up, kept distinct so
+two abstract cards do not read as the same wallpaper twice. Both carry grain on
+purpose, since a smooth dark gradient bands badly once it is JPEG'd, and both are
+encoded at quality 84 rather than the pipeline's 78 for the same reason.
 
 ### Notes on decisions worth keeping
 
@@ -182,10 +192,16 @@ assistive technology.
 
 ### Work remaining
 
-- Selected Projects points at [order-saga](https://github.com/Jagdish1998/order-saga),
-  [sql-guard-mcp](https://github.com/Jagdish1998/sql-guard-mcp) and
-  [linkedin-optimiser](https://github.com/Jagdish1998/linkedin-optimiser). Only the
-  third card has a real screenshot; the first two are still placeholder renders.
+- Selected Projects holds six cards, in this order:
+  [order-saga](https://github.com/Jagdish1998/order-saga),
+  [sql-guard-mcp](https://github.com/Jagdish1998/sql-guard-mcp),
+  [linkedin-optimiser](https://github.com/Jagdish1998/linkedin-optimiser),
+  [llm-gateway](https://github.com/Jagdish1998/llm-gateway),
+  [job-tracker](https://github.com/Jagdish1998/job-tracker) and this site.
+- Image numbers follow card order, so inserting a card means renumbering the rest.
+  `work-3` and `work-6` are real captures, `work-1` and `work-2` are still
+  placeholder renders, and `work-4` and `work-5` are generated tiles: llm-gateway is
+  an API with no UI, and job-tracker has no dashboard yet.
 - Only linkedin-optimiser has a live demo link. order-saga and sql-guard-mcp need
   one once they are deployed.
 - `og:url` and `og:image` in `index.html` need the final deployed URL.
