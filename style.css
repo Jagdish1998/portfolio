@@ -536,7 +536,11 @@ section[id] {
 .hero-inner {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    align-items: center;
+    /* Start-aligned, not centred: the copy column is tall (badge, role, a
+       three-line headline, lede, CTA, stats), and centring dragged the portrait
+       down to match its midpoint. Anchoring to the top and nudging the portrait
+       down a set amount keeps it beside the headline regardless of copy height. */
+    align-items: start;
     gap: clamp(2rem, 5vw, 4rem);
     width: 100%;
 }
@@ -551,6 +555,8 @@ section[id] {
 .hero-portrait {
     position: relative;
     justify-self: center;
+    /* Sits beside the headline rather than at the very top of the column. */
+    margin-top: clamp(1rem, 4vw, 3.5rem);
     width: 100%;
     max-width: clamp(240px, 30vw, 400px);
     /* The source photo sits on solid black. Matching the frame to it turns that
@@ -639,6 +645,8 @@ section[id] {
     /* Inter needs tighter tracking than a geometric sans at display sizes. */
     letter-spacing: -0.035em;
     margin-bottom: var(--space-4);
+    /* Even out the wrap so the last line is not a single orphan word. */
+    text-wrap: balance;
 }
 
 .hero-lede {
@@ -656,9 +664,13 @@ section[id] {
 }
 
 .hero-stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: clamp(1.5rem, 5vw, 4rem);
+    /* Explicit three-column grid rather than a wrapping flex row. The copy column
+       is narrow (~570px), so laying the stats out by their natural width pushed
+       the third onto its own row. Three equal columns keep all three on one line;
+       the longer labels simply wrap to a second line within their own column. */
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(0.75rem, 2vw, 1.75rem);
 }
 
 .hero-stats li {
@@ -1814,7 +1826,9 @@ section[id] {
         width: 100%;
     }
 
+    /* Narrow width: three columns crush the multi-word labels, so drop to two. */
     .hero-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1.25rem 2rem;
     }
 
@@ -1919,8 +1933,10 @@ section[id] {
         margin-bottom: var(--space-5);
     }
 
+    /* A short, wide screen still has full width, so keep three columns; just
+       tighten the vertical rhythm. */
     .hero-stats {
-        gap: 1.25rem 2.5rem;
+        gap: 1.25rem 1.5rem;
     }
 
     .scroll-hint {
