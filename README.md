@@ -202,8 +202,9 @@ assistive technology.
   commercial use, no attribution required), thematically matched to each project
   and darkened to sit in the dark card frame. Stock is decoration, not proof:
   replace each with a screenshot of the running app when you can.
-- Only linkedin-optimiser has a live demo link. order-saga and sql-guard-mcp need
-  one once they are deployed.
+- linkedin-optimiser and llm-gateway have live demo links (the latter hosted on
+  Render's free tier, so it cold-starts after idle). order-saga, sql-guard-mcp and
+  job-tracker still need deploying before they can carry one.
 - `og:url` and `og:image` in `index.html` need the final deployed URL.
 - Font Awesome ships about 273KB of webfonts for 24 icons; inline SVG would be
   the largest remaining performance win.
