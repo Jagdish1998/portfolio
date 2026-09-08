@@ -923,9 +923,33 @@ section[id] {
     font-size: var(--step-0);
 }
 
+/* Impact bullets under a role. Company name stays as the <p>; these sit below it. */
+.timeline-points {
+    margin-top: 0.5rem;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.3rem;
+    list-style: disc;
+}
+
+.timeline-points li {
+    padding-bottom: 0;
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    line-height: 1.5;
+}
+
+.timeline-points li::before {
+    content: none;
+}
+
 /* ============================================================
    Cards (coding profiles + services)
    ============================================================ */
+/* Three columns. Both grids that use this (Coding and Expertise) now hold six
+   cards, so every row is full and no trailing-row centring is needed. If either
+   grows to a count that is not a multiple of three, revisit: a trailing one or two
+   cards would sit left-aligned with a gap on the right. */
 .card-grid {
     --grid-gap: clamp(1.25rem, 2.5vw, 2rem);
     display: grid;
@@ -1822,6 +1846,8 @@ section[id] {
         width: auto;
         margin-inline: 0;
     }
+
+
 
     /* One per row here, so nothing is orphaned and every trailing rule resets. */
     .work-grid > .work:last-child:nth-child(odd),
