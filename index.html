@@ -591,19 +591,19 @@
 
         <!-- ============ portfolio ============ -->
         <!--
-          TODO (Jagdish): image numbers follow card order, so inserting a card
-          means renumbering the ones after it. work-3 and work-6 are real
-          captures. work-1 and work-2 are still placeholder renders: swap
-          work-1-800.jpg for the order-saga chaos console mid-compensation, and
-          work-2-800.jpg for a sql-guard-mcp refusal in an MCP client. work-4 and
-          work-5 are generated tiles, since llm-gateway is an API with no UI and
-          job-tracker has no dashboard yet. See the README for the headless Edge
-          command.
+          TODO (Jagdish): cards are a landscape media area (16:10) over a solid
+          body, so the images are 16:10 now, not 4:5. Image numbers follow card
+          order, so inserting a card means renumbering the ones after it.
 
-          Headings are the readable form of the repo name, not the slug, which
-          is why they are title case here and lower case on GitHub. Only
-          linkedin-optimiser is deployed, so it is the only card with a second
-          demo link; add the same anchor to the others once they have a URL.
+          work-3 and work-6 are real captures. work-1, work-2, work-4 and work-5
+          are licensed stock (Pexels, free for commercial use, no attribution
+          required), thematically matched and darkened to sit in the card frame.
+          They are decoration, not proof; replace each with a real screenshot of
+          the running app when you have one. See the README for the capture command.
+
+          Headings are the readable form of the repo name, not the slug, which is
+          why they are title case here and lower case on GitHub. Add a second
+          anchor with class="is-demo" once a project has a live URL.
         -->
         <section id="portfolio" class="section">
             <div class="container">
@@ -614,25 +614,25 @@
                     <article class="work reveal">
                         <div class="work-media">
                             <img src="images/opt/work-1-800.jpg"
-                                alt="The order-saga chaos console, showing a saga compensating after a payment failure"
-                                width="650" height="800" loading="lazy" decoding="async">
-                            <div class="work-layer">
-                                <h3>Order Saga</h3>
-                                <p>An event-driven order pipeline you can break on purpose. Transactional outbox,
-                                    idempotent consumers and compensating transactions, watched live in a chaos
-                                    console.</p>
-                                <ul class="chips chips-sm">
-                                    <li>Spring Boot</li>
-                                    <li>Kafka</li>
-                                    <li>PostgreSQL</li>
-                                    <li>Testcontainers</li>
-                                </ul>
-                                <div class="work-links">
-                                    <a href="https://github.com/Jagdish1998/order-saga" target="_blank"
-                                        rel="noopener noreferrer" aria-label="Order Saga source on GitHub">
-                                        <i class="fa-brands fa-github" aria-hidden="true"></i>
-                                    </a>
-                                </div>
+                                alt="Abstract circuitry suggesting data flowing through an event pipeline"
+                                width="800" height="500" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-body">
+                            <h3>Order Saga</h3>
+                            <p>An event-driven order pipeline you can break on purpose. Transactional outbox,
+                                idempotent consumers and compensating transactions, watched live in a chaos
+                                console.</p>
+                            <ul class="chips chips-sm">
+                                <li>Spring Boot</li>
+                                <li>Kafka</li>
+                                <li>PostgreSQL</li>
+                                <li>Testcontainers</li>
+                            </ul>
+                            <div class="work-links">
+                                <a href="https://github.com/Jagdish1998/order-saga" target="_blank"
+                                    rel="noopener noreferrer" aria-label="Order Saga source on GitHub">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i> Source
+                                </a>
                             </div>
                         </div>
                     </article>
@@ -640,25 +640,25 @@
                     <article class="work reveal">
                         <div class="work-media">
                             <img src="images/opt/work-2-800.jpg"
-                                alt="sql-guard-mcp refusing a data-modifying query and explaining which rule it broke"
-                                width="650" height="800" loading="lazy" decoding="async">
-                            <div class="work-layer">
-                                <h3>SQL Guard MCP</h3>
-                                <p>An MCP server that lets a language model query a database without being able to
-                                    damage it. Read-only enforced by real SQL parsing, planner cost limits and PII
-                                    masking.</p>
-                                <ul class="chips chips-sm">
-                                    <li>Spring AI</li>
-                                    <li>MCP</li>
-                                    <li>JSqlParser</li>
-                                    <li>PostgreSQL</li>
-                                </ul>
-                                <div class="work-links">
-                                    <a href="https://github.com/Jagdish1998/sql-guard-mcp" target="_blank"
-                                        rel="noopener noreferrer" aria-label="SQL Guard MCP source on GitHub">
-                                        <i class="fa-brands fa-github" aria-hidden="true"></i>
-                                    </a>
-                                </div>
+                                alt="A padlock on a dark surface, suggesting guarded database access"
+                                width="800" height="500" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-body">
+                            <h3>SQL Guard MCP</h3>
+                            <p>An MCP server that lets a language model query a database without being able to
+                                damage it. Read-only enforced by real SQL parsing, planner cost limits and PII
+                                masking.</p>
+                            <ul class="chips chips-sm">
+                                <li>Spring AI</li>
+                                <li>MCP</li>
+                                <li>JSqlParser</li>
+                                <li>PostgreSQL</li>
+                            </ul>
+                            <div class="work-links">
+                                <a href="https://github.com/Jagdish1998/sql-guard-mcp" target="_blank"
+                                    rel="noopener noreferrer" aria-label="SQL Guard MCP source on GitHub">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i> Source
+                                </a>
                             </div>
                         </div>
                     </article>
@@ -667,27 +667,27 @@
                         <div class="work-media">
                             <img src="images/opt/work-3-800.jpg"
                                 alt="A LinkedIn Optimiser report card scoring a profile 93 out of 100, grade A, with first impression, story and searchability scored separately"
-                                width="640" height="800" loading="lazy" decoding="async">
-                            <div class="work-layer">
-                                <h3>LinkedIn Optimiser</h3>
-                                <p>Scores a LinkedIn profile against 39 readable rules and returns copy-ready fixes.
-                                    No account, no upload, no LLM: the whole engine runs in the browser.</p>
-                                <ul class="chips chips-sm">
-                                    <li>TypeScript</li>
-                                    <li>React</li>
-                                    <li>Vite</li>
-                                    <li>Vitest</li>
-                                </ul>
-                                <div class="work-links">
-                                    <a href="https://github.com/Jagdish1998/linkedin-optimiser" target="_blank"
-                                        rel="noopener noreferrer" aria-label="LinkedIn Optimiser source on GitHub">
-                                        <i class="fa-brands fa-github" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="https://jagdish1998.github.io/linkedin-optimiser/" target="_blank"
-                                        rel="noopener noreferrer" aria-label="LinkedIn Optimiser live demo">
-                                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                    </a>
-                                </div>
+                                width="800" height="500" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-body">
+                            <h3>LinkedIn Optimiser</h3>
+                            <p>Scores a LinkedIn profile against 39 readable rules and returns copy-ready fixes.
+                                No account, no upload, no LLM: the whole engine runs in the browser.</p>
+                            <ul class="chips chips-sm">
+                                <li>TypeScript</li>
+                                <li>React</li>
+                                <li>Vite</li>
+                                <li>Vitest</li>
+                            </ul>
+                            <div class="work-links">
+                                <a href="https://github.com/Jagdish1998/linkedin-optimiser" target="_blank"
+                                    rel="noopener noreferrer" aria-label="LinkedIn Optimiser source on GitHub">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i> Source
+                                </a>
+                                <a class="is-demo" href="https://jagdish1998.github.io/linkedin-optimiser/"
+                                    target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Optimiser live demo">
+                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo
+                                </a>
                             </div>
                         </div>
                     </article>
@@ -695,25 +695,25 @@
                     <article class="work reveal">
                         <div class="work-media">
                             <img src="images/opt/work-4-800.jpg"
-                                alt="An abstract graphic of an open circuit breaker ring above six descending stage bars"
-                                width="640" height="800" loading="lazy" decoding="async">
-                            <div class="work-layer">
-                                <h3>LLM Gateway</h3>
-                                <p>The operational layer an LLM provider does not give you: per-tenant token budgets,
-                                    response caching, retry inside a circuit breaker, and cost attribution per
-                                    tenant.</p>
-                                <ul class="chips chips-sm">
-                                    <li>Spring Boot</li>
-                                    <li>Redis</li>
-                                    <li>Resilience4j</li>
-                                    <li>SSE</li>
-                                </ul>
-                                <div class="work-links">
-                                    <a href="https://github.com/Jagdish1998/llm-gateway" target="_blank"
-                                        rel="noopener noreferrer" aria-label="LLM Gateway source on GitHub">
-                                        <i class="fa-brands fa-github" aria-hidden="true"></i>
-                                    </a>
-                                </div>
+                                alt="Blue light trails converging, suggesting traffic routed through a single gateway"
+                                width="800" height="500" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-body">
+                            <h3>LLM Gateway</h3>
+                            <p>The operational layer an LLM provider does not give you: per-tenant token budgets,
+                                response caching, retry inside a circuit breaker, and cost attribution per
+                                tenant.</p>
+                            <ul class="chips chips-sm">
+                                <li>Spring Boot</li>
+                                <li>Redis</li>
+                                <li>Resilience4j</li>
+                                <li>SSE</li>
+                            </ul>
+                            <div class="work-links">
+                                <a href="https://github.com/Jagdish1998/llm-gateway" target="_blank"
+                                    rel="noopener noreferrer" aria-label="LLM Gateway source on GitHub">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i> Source
+                                </a>
                             </div>
                         </div>
                     </article>
@@ -721,25 +721,25 @@
                     <article class="work reveal">
                         <div class="work-media">
                             <img src="images/opt/work-5-800.jpg"
-                                alt="An abstract graphic of four event log partitions, their offsets filling from left to right"
-                                width="640" height="800" loading="lazy" decoding="async">
-                            <div class="work-layer">
-                                <h3>Job Tracker</h3>
-                                <p>Ingests application email from Gmail and classifies it with an LLM that proposes
-                                    rather than decides. Status is derived from an append-only event log, never
-                                    overwritten.</p>
-                                <ul class="chips chips-sm">
-                                    <li>Spring Boot</li>
-                                    <li>Kafka</li>
-                                    <li>OAuth2</li>
-                                    <li>Flyway</li>
-                                </ul>
-                                <div class="work-links">
-                                    <a href="https://github.com/Jagdish1998/job-tracker" target="_blank"
-                                        rel="noopener noreferrer" aria-label="Job Tracker source on GitHub">
-                                        <i class="fa-brands fa-github" aria-hidden="true"></i>
-                                    </a>
-                                </div>
+                                alt="A grid of mailboxes, suggesting email being ingested and sorted"
+                                width="800" height="500" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-body">
+                            <h3>Job Tracker</h3>
+                            <p>Ingests application email from Gmail and classifies it with an LLM that proposes
+                                rather than decides. Status is derived from an append-only event log, never
+                                overwritten.</p>
+                            <ul class="chips chips-sm">
+                                <li>Spring Boot</li>
+                                <li>Kafka</li>
+                                <li>OAuth2</li>
+                                <li>Flyway</li>
+                            </ul>
+                            <div class="work-links">
+                                <a href="https://github.com/Jagdish1998/job-tracker" target="_blank"
+                                    rel="noopener noreferrer" aria-label="Job Tracker source on GitHub">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i> Source
+                                </a>
                             </div>
                         </div>
                     </article>
@@ -748,23 +748,23 @@
                         <div class="work-media">
                             <img src="images/opt/work-6-800.jpg"
                                 alt="The hero section of this portfolio site, showing its dark theme and portrait"
-                                width="640" height="800" loading="lazy" decoding="async">
-                            <div class="work-layer">
-                                <h3>This Portfolio</h3>
-                                <p>The site you are reading. Hand-written HTML, CSS and JavaScript with no framework
-                                    and no build step, and a gallery that went from 33MB to 521KB.</p>
-                                <ul class="chips chips-sm">
-                                    <li>HTML5</li>
-                                    <li>CSS3</li>
-                                    <li>JavaScript</li>
-                                    <li>GitHub Pages</li>
-                                </ul>
-                                <div class="work-links">
-                                    <a href="https://github.com/Jagdish1998/portfolio" target="_blank"
-                                        rel="noopener noreferrer" aria-label="This portfolio's source on GitHub">
-                                        <i class="fa-brands fa-github" aria-hidden="true"></i>
-                                    </a>
-                                </div>
+                                width="800" height="500" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-body">
+                            <h3>This Portfolio</h3>
+                            <p>The site you are reading. Hand-written HTML, CSS and JavaScript with no framework
+                                and no build step, and a gallery that went from 33MB to 521KB.</p>
+                            <ul class="chips chips-sm">
+                                <li>HTML5</li>
+                                <li>CSS3</li>
+                                <li>JavaScript</li>
+                                <li>GitHub Pages</li>
+                            </ul>
+                            <div class="work-links">
+                                <a href="https://github.com/Jagdish1998/portfolio" target="_blank"
+                                    rel="noopener noreferrer" aria-label="This portfolio's source on GitHub">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i> Source
+                                </a>
                             </div>
                         </div>
                     </article>

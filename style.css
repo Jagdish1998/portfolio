@@ -1100,14 +1100,14 @@ section[id] {
 /* ============================================================
    Work
    ============================================================ */
-/* Three per row, but on six tracks with each card spanning two. The card width
-   works out identical to a three-track grid, and it buys one thing three tracks
-   cannot do: a trailing row of two can start one track in and sit centred rather
-   than hanging off the left edge.
+/* Card-body pattern, not photo tiles. Landscape media at the top shown at full
+   brightness, then a solid body with title, description, chips and links. Text
+   sits on a real surface, so contrast is reliable and the media (screenshots and
+   generated art alike) is never dimmed by a scrim.
 
-   The overlay is bottom-aligned with no overflow handling, so a description long
-   enough to outgrow the card pushes the title out of the top of the frame. Keep
-   card copy to roughly two sentences. */
+   Six even tracks, each card spans two, so three per row. Six cards fill two full
+   rows; the trailing-row rules below only fire when the count is not a multiple
+   of three. */
 .work-grid {
     --grid-gap: clamp(1.25rem, 2.5vw, 2rem);
     display: grid;
@@ -1117,109 +1117,124 @@ section[id] {
 
 .work {
     grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    background: var(--bg-elev);
+    box-shadow: var(--edge-highlight), var(--shadow-sm);
+    overflow: hidden;
+    transition: transform var(--dur-base) var(--ease),
+        border-color var(--dur-base) var(--ease),
+        box-shadow var(--dur-base) var(--ease);
 }
 
-/* Five cards: the fourth opens the last row with one card to follow. Restate the
-   span rather than setting grid-column-start alone, because the shorthand above
-   puts "span 2" in the start slot, and overriding only the start would leave the
-   end at auto and collapse the card to a single track. */
+.work:hover,
+.work:focus-within {
+    transform: translateY(-6px);
+    border-color: var(--border-strong);
+    box-shadow: var(--edge-highlight), var(--shadow-lg);
+}
+
+/* A trailing single card (counts like 4 or 7) sits one track in, centred. */
+.work-grid > .work:last-child:nth-child(3n + 1) {
+    grid-column: 3 / span 2;
+}
+
+/* A trailing pair (counts like 5 or 8): the first of the two opens one track in,
+   so the pair sits centred. Restate the full span, since overriding only the
+   start line would drop the end and collapse the card to one track. */
 .work-grid > .work:nth-child(3n + 1):nth-last-child(2) {
     grid-column: 2 / span 2;
 }
 
 .work-media {
     position: relative;
-    border-radius: var(--radius-lg);
     overflow: hidden;
-    border: 1px solid var(--border);
+    /* Landscape frame: software screenshots and the generated tiles both read
+       better wide than tall. Sits above the body, not behind it. */
+    aspect-ratio: 16 / 10;
+    background: var(--bg-elev-2);
+    border-bottom: 1px solid var(--border);
 }
 
-/* Kept portrait to suit the current placeholder images, which are 650x800. A
-   landscape frame (16/10) matches real project screenshots better and is worth
-   switching to once actual screenshots replace the placeholders. */
 .work-media img {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    height: 100%;
     object-fit: cover;
     transition: transform var(--dur-image) var(--ease);
 }
 
-.work-layer {
-    position: absolute;
-    inset: 0;
+.work:hover .work-media img,
+.work:focus-within .work-media img {
+    transform: scale(1.04);
+}
+
+.work-body {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    gap: 0.65rem;
-    padding: clamp(1.25rem, 2.5vw, 1.75rem);
-    /* Title and tags stay legible without hovering; hover only adds the links.
-       The scrim is deliberately heavy: measured against the actual photo pixels,
-       a lighter gradient dropped to 1.56:1 over bright areas of the image. */
-    background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.28) 30%, rgba(0, 0, 0, 0.66) 56%, rgba(0, 0, 0, 0.88) 100%);
-    color: #fff;
-    transition: background var(--dur-base) var(--ease);
+    gap: 0.6rem;
+    /* Grow to equal the tallest card in the row so every footer aligns. */
+    flex: 1;
+    padding: clamp(1.15rem, 2vw, 1.5rem);
 }
 
-.work-layer h3 {
+.work-body h3 {
     font-size: var(--step-2);
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
-.work-layer p {
+.work-body p {
     font-size: var(--step--1);
-    color: rgba(255, 255, 255, 0.88);
+    color: var(--text-muted);
+    line-height: 1.55;
 }
 
-.work-layer .chips li {
-    background: rgba(255, 255, 255, 0.16);
-    border-color: rgba(255, 255, 255, 0.28);
-    color: #fff;
-}
-
-.work-layer .chips li:hover {
-    transform: none;
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.5);
+/* Chips inherit the global .chips-sm treatment. Push the footer to the bottom so
+   cards of differing description length still line their links up. */
+.work-body .chips {
+    margin-top: 0.15rem;
 }
 
 .work-links {
     display: flex;
-    gap: 0.6rem;
-    margin-top: 0.35rem;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: var(--space-3);
 }
 
 .work-links a {
-    display: grid;
-    place-items: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: #fff;
-    color: var(--accent);
-    font-size: 1rem;
-    transition: transform var(--dur-fast) var(--ease);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: var(--bg-elev-2);
+    color: var(--text);
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: border-color var(--dur-fast) var(--ease),
+        color var(--dur-fast) var(--ease),
+        background var(--dur-fast) var(--ease);
 }
 
 .work-links a:hover {
-    transform: translateY(-3px);
+    border-color: var(--accent);
+    color: var(--accent-ink);
 }
 
-.work:hover .work-media img,
-.work:focus-within .work-media img {
-    transform: scale(1.07);
+/* The live-demo link is the stronger call to action where it exists. */
+.work-links a.is-demo {
+    background: var(--accent-soft);
+    border-color: transparent;
+    color: var(--accent-ink);
 }
 
-.work:hover .work-layer,
-.work:focus-within .work-layer {
-    background: linear-gradient(transparent 12%, rgba(0, 0, 0, 0.72) 55%, rgba(255, 0, 79, 0.88));
-}
-
-.work:hover .work-links,
-.work:focus-within .work-links {
-    opacity: 1;
-    transform: none;
+.work-links a.is-demo:hover {
+    border-color: var(--accent);
 }
 
 /* ============================================================
@@ -1678,15 +1693,13 @@ section[id] {
         margin-inline: auto;
     }
 
-    /* The trailing-pair nudge is a three-per-row fix and does not apply here. Back
-       to a plain two-track span, not grid-column-start: auto, which would drop the
-       span and leave the card one track wide. */
+    /* The three-per-row trailing rules do not apply on two-per-row: reset them,
+       then re-centre a genuine odd-one-out (odd total) at one card's width. */
+    .work-grid > .work:last-child:nth-child(3n + 1),
     .work-grid > .work:nth-child(3n + 1):nth-last-child(2) {
         grid-column: span 2;
     }
 
-    /* An odd number of cards leaves the last one alone on its row. Two tracks in
-       gets it centred at one card's width, no width or margin override needed. */
     .work-grid > .work:last-child:nth-child(odd) {
         grid-column: 2 / span 2;
     }
@@ -1810,8 +1823,9 @@ section[id] {
         margin-inline: 0;
     }
 
-    /* Likewise one per row here, so nothing is orphaned and nothing needs a nudge. */
+    /* One per row here, so nothing is orphaned and every trailing rule resets. */
     .work-grid > .work:last-child:nth-child(odd),
+    .work-grid > .work:last-child:nth-child(3n + 1),
     .work-grid > .work:nth-child(3n + 1):nth-last-child(2) {
         grid-column: span 2;
     }
@@ -1826,11 +1840,7 @@ section[id] {
         border-radius: var(--radius);
     }
 
-    /* No hover on touch, so the links need to be visible by default. */
-    .work-links {
-        opacity: 1;
-        transform: none;
-    }
+
 
     .footer-inner {
         justify-content: center;

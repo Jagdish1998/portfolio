@@ -143,22 +143,17 @@ portrait one: 1000px collapses that hero into a single column, so the shot shows
 layout no visitor on a laptop ever sees. And keep `--virtual-time-budget`, or the
 shot can land before webfonts and entrance animations have settled.
 
-Then crop rather than shrink. A whole page scaled into a 650px card reads as a
-screenshot of a website; one component filling the frame reads as a product.
-`images/work-3.png` is the hero's report card cropped to 4:5 with about 14% padding,
-sitting slightly high in the frame so the stacked card behind it stays in shot.
-`images/work-5.png` is a full-height 4:5 slice of this site's own hero, anchored
-right of centre so the portrait is in frame rather than cut in half. Regenerate the
-`-800` variant afterwards; the work sources only need that one size, since the cards
-never load them larger.
+The card media is 16:10, so the real captures (`work-3`, `work-6`) are the top 16:10
+slice of the full-width shot, which frames the hero or report card without cropping
+awkwardly. Regenerate the `-800` variant afterwards; the work sources only need that
+one size, since the cards never load them larger.
 
-`work-4` and `work-5` are the exception: generated tiles rather than screenshots,
-because llm-gateway is an API and job-tracker has no dashboard yet. Both are dark
-gradients in the site palette with a motif drawn on top, one an open circuit breaker
-over descending stage bars and the other event-log lanes filling up, kept distinct so
-two abstract cards do not read as the same wallpaper twice. Both carry grain on
-purpose, since a smooth dark gradient bands badly once it is JPEG'd, and both are
-encoded at quality 84 rather than the pipeline's 78 for the same reason.
+`work-1`, `work-2`, `work-4` and `work-5` are licensed stock from the Pexels image
+CDN, cropped to 16:10 centred and given a flat dark wash (14 to 24 percent) so light
+photos do not clash with the dark cards. They were picked by sampling each candidate's
+average pixel colour and brightness rather than by filename, since the theme match
+matters less than not fighting the card. The Pexels license permits commercial use
+with no attribution, so nothing needs crediting on the page.
 
 ### Notes on decisions worth keeping
 
@@ -198,10 +193,15 @@ assistive technology.
   [linkedin-optimiser](https://github.com/Jagdish1998/linkedin-optimiser),
   [llm-gateway](https://github.com/Jagdish1998/llm-gateway),
   [job-tracker](https://github.com/Jagdish1998/job-tracker) and this site.
+- Cards are a landscape media area (16:10) over a solid body: title, description,
+  chips and links on a real surface, not text on a scrim. Links are always visible,
+  not hover-gated, and the live-demo link carries `class="is-demo"` for accent.
 - Image numbers follow card order, so inserting a card means renumbering the rest.
-  `work-3` and `work-6` are real captures, `work-1` and `work-2` are still
-  placeholder renders, and `work-4` and `work-5` are generated tiles: llm-gateway is
-  an API with no UI, and job-tracker has no dashboard yet.
+  All six are 16:10. `work-3` and `work-6` are real captures of deployed sites.
+  `work-1`, `work-2`, `work-4` and `work-5` are licensed Pexels stock (free for
+  commercial use, no attribution required), thematically matched to each project
+  and darkened to sit in the dark card frame. Stock is decoration, not proof:
+  replace each with a screenshot of the running app when you can.
 - Only linkedin-optimiser has a live demo link. order-saga and sql-guard-mcp need
   one once they are deployed.
 - `og:url` and `og:image` in `index.html` need the final deployed URL.
