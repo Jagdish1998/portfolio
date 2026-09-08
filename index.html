@@ -592,18 +592,20 @@
         <!-- ============ portfolio ============ -->
         <!--
           TODO (Jagdish): cards are a landscape media area (16:10) over a solid
-          body, so the images are 16:10 now, not 4:5. Image numbers follow card
-          order, so inserting a card means renumbering the ones after it.
+          body. Cards are ordered deployed-first: the three with a live demo lead,
+          source-only follow.
 
-          work-3 and work-6 are real captures. work-1, work-2, work-4 and work-5
-          are licensed stock (Pexels, free for commercial use, no attribution
-          required), thematically matched and darkened to sit in the card frame.
-          They are decoration, not proof; replace each with a real screenshot of
-          the running app when you have one. See the README for the capture command.
+          Images are named by project now, not by index, so reordering cards does
+          not mean renaming files. All are licensed Pexels stock (free for
+          commercial use, no attribution required), thematically matched and
+          darkened to sit in the dark card frame: they are decoration, not proof,
+          so replace each with a real screenshot of the running app when you have
+          one. See the README for the capture command. (The old work-3 screenshot
+          of the LinkedIn Optimiser site is unused now that the card uses stock.)
 
           Headings are the readable form of the repo name, not the slug, which is
-          why they are title case here and lower case on GitHub. Add a second
-          anchor with class="is-demo" once a project has a live URL.
+          why RAG Forge is two title-case words here and rag-forge on GitHub. Add a
+          second anchor with class="is-demo" once a project has a live URL.
         -->
         <section id="portfolio" class="section">
             <div class="container">
@@ -611,32 +613,8 @@
                 <h2 class="section-title reveal">Selected Projects</h2>
 
                 <div class="work-grid">
-                    <article class="work reveal">
-                        <div class="work-media">
-                            <img src="images/opt/work-1-800.jpg"
-                                alt="Abstract circuitry suggesting data flowing through an event pipeline"
-                                width="800" height="500" loading="lazy" decoding="async">
-                        </div>
-                        <div class="work-body">
-                            <h3>Order Saga</h3>
-                            <p>An event-driven order pipeline you can break on purpose. Transactional outbox,
-                                idempotent consumers and compensating transactions, watched live in a chaos
-                                console.</p>
-                            <ul class="chips chips-sm">
-                                <li>Spring Boot</li>
-                                <li>Kafka</li>
-                                <li>PostgreSQL</li>
-                                <li>Testcontainers</li>
-                            </ul>
-                            <div class="work-links">
-                                <a href="https://github.com/Jagdish1998/order-saga" target="_blank"
-                                    rel="noopener noreferrer" aria-label="Order Saga source on GitHub">
-                                    <i class="fa-brands fa-github" aria-hidden="true"></i> Source
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
+                    <!-- Deployed-first: the three cards with a live demo lead, so the
+                         first row a visitor sees is all clickable and alive. -->
                     <article class="work reveal">
                         <div class="work-media">
                             <img src="images/opt/work-4-800.jpg"
@@ -645,13 +623,13 @@
                         </div>
                         <div class="work-body">
                             <h3>LLM Gateway</h3>
-                            <p>The operational layer an LLM provider does not give you: per-tenant token budgets,
-                                response caching, retry inside a circuit breaker, and cost attribution per
-                                tenant.</p>
+                            <p>A gateway in front of any LLM provider, adding per-tenant token budgets, caching and
+                                retries behind a circuit breaker. It makes cost and resilience the gateway's job, not
+                                every service's.</p>
                             <ul class="chips chips-sm">
+                                <li>Resilience4j</li>
                                 <li>Spring Boot</li>
                                 <li>Redis</li>
-                                <li>Resilience4j</li>
                                 <li>SSE</li>
                             </ul>
                             <div class="work-links">
@@ -669,54 +647,27 @@
 
                     <article class="work reveal">
                         <div class="work-media">
-                            <img src="images/opt/work-2-800.jpg"
-                                alt="A padlock on a dark surface, suggesting guarded database access"
-                                width="800" height="500" loading="lazy" decoding="async">
-                        </div>
-                        <div class="work-body">
-                            <h3>SQL Guard MCP</h3>
-                            <p>An MCP server that lets a language model query a database without being able to
-                                damage it. Read-only enforced by real SQL parsing, planner cost limits and PII
-                                masking.</p>
-                            <ul class="chips chips-sm">
-                                <li>Spring AI</li>
-                                <li>MCP</li>
-                                <li>JSqlParser</li>
-                                <li>PostgreSQL</li>
-                            </ul>
-                            <div class="work-links">
-                                <a href="https://github.com/Jagdish1998/sql-guard-mcp" target="_blank"
-                                    rel="noopener noreferrer" aria-label="SQL Guard MCP source on GitHub">
-                                    <i class="fa-brands fa-github" aria-hidden="true"></i> Source
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="work reveal">
-                        <div class="work-media">
                             <img src="images/opt/work-rag-800.jpg"
                                 alt="A library of shelves receding into depth, suggesting a body of knowledge to retrieve answers from"
                                 width="800" height="500" loading="lazy" decoding="async">
                         </div>
                         <div class="work-body">
-                            <h3>rag-forge</h3>
-                            <p>A retrieval-augmented-generation service that answers questions grounded in your
-                                documents, with citations, and abstains when it has no supporting context. The
-                                rule is cite or abstain: it never invents an answer.</p>
+                            <h3>RAG Forge</h3>
+                            <p>Answers questions grounded in your own documents, with citations. The rule is cite or
+                                abstain: when nothing supports an answer, it says so rather than inventing one.</p>
                             <ul class="chips chips-sm">
-                                <li>Spring Boot</li>
                                 <li>pgvector</li>
+                                <li>Spring Boot</li>
                                 <li>Flyway</li>
                                 <li>Testcontainers</li>
                             </ul>
                             <div class="work-links">
                                 <a href="https://github.com/Jagdish1998/rag-forge" target="_blank"
-                                    rel="noopener noreferrer" aria-label="rag-forge source on GitHub">
+                                    rel="noopener noreferrer" aria-label="RAG Forge source on GitHub">
                                     <i class="fa-brands fa-github" aria-hidden="true"></i> Source
                                 </a>
                                 <a class="is-demo" href="https://rag-forge-l748.onrender.com/"
-                                    target="_blank" rel="noopener noreferrer" aria-label="rag-forge live demo">
+                                    target="_blank" rel="noopener noreferrer" aria-label="RAG Forge live demo">
                                     <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo
                                 </a>
                             </div>
@@ -725,40 +676,14 @@
 
                     <article class="work reveal">
                         <div class="work-media">
-                            <img src="images/opt/work-5-800.jpg"
-                                alt="A grid of mailboxes, suggesting email being ingested and sorted"
-                                width="800" height="500" loading="lazy" decoding="async">
-                        </div>
-                        <div class="work-body">
-                            <h3>Job Tracker</h3>
-                            <p>Ingests application email from Gmail and classifies it with an LLM that proposes
-                                rather than decides. Status is derived from an append-only event log, never
-                                overwritten.</p>
-                            <ul class="chips chips-sm">
-                                <li>Spring Boot</li>
-                                <li>Kafka</li>
-                                <li>OAuth2</li>
-                                <li>Flyway</li>
-                            </ul>
-                            <div class="work-links">
-                                <a href="https://github.com/Jagdish1998/job-tracker" target="_blank"
-                                    rel="noopener noreferrer" aria-label="Job Tracker source on GitHub">
-                                    <i class="fa-brands fa-github" aria-hidden="true"></i> Source
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="work reveal">
-                        <div class="work-media">
-                            <img src="images/opt/work-3-800.jpg"
-                                alt="A LinkedIn Optimiser report card scoring a profile 93 out of 100, grade A, with first impression, story and searchability scored separately"
+                            <img src="images/opt/work-lo-800.jpg"
+                                alt="Analytics on a laptop screen, suggesting a professional profile being scored and reviewed"
                                 width="800" height="500" loading="lazy" decoding="async">
                         </div>
                         <div class="work-body">
                             <h3>LinkedIn Optimiser</h3>
-                            <p>Scores a LinkedIn profile against 39 readable rules and returns copy-ready fixes.
-                                No account, no upload, no LLM: the whole engine runs in the browser.</p>
+                            <p>Scores a LinkedIn profile against 39 rules and returns copy-ready fixes. No account,
+                                no upload, no LLM: the whole engine runs in your browser.</p>
                             <ul class="chips chips-sm">
                                 <li>TypeScript</li>
                                 <li>React</li>
@@ -773,6 +698,85 @@
                                 <a class="is-demo" href="https://jagdish1998.github.io/linkedin-optimiser/"
                                     target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Optimiser live demo">
                                     <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Source-only cards follow. -->
+                    <article class="work reveal">
+                        <div class="work-media">
+                            <img src="images/opt/work-1-800.jpg"
+                                alt="Abstract circuitry suggesting data flowing through an event pipeline"
+                                width="800" height="500" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-body">
+                            <h3>Order Saga</h3>
+                            <p>An event-driven order pipeline built to fail safely. A transactional outbox,
+                                idempotent consumers and compensating transactions keep a half-finished order from
+                                leaking state.</p>
+                            <ul class="chips chips-sm">
+                                <li>Kafka</li>
+                                <li>Spring Boot</li>
+                                <li>PostgreSQL</li>
+                                <li>Testcontainers</li>
+                            </ul>
+                            <div class="work-links">
+                                <a href="https://github.com/Jagdish1998/order-saga" target="_blank"
+                                    rel="noopener noreferrer" aria-label="Order Saga source on GitHub">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i> Source
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="work reveal">
+                        <div class="work-media">
+                            <img src="images/opt/work-2-800.jpg"
+                                alt="A padlock on a dark surface, suggesting guarded database access"
+                                width="800" height="500" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-body">
+                            <h3>SQL Guard MCP</h3>
+                            <p>Lets a language model query a database without being able to harm it. Enforcement is
+                                real SQL parsing and a read-only role, not keyword blocking that WITH clauses slip
+                                past.</p>
+                            <ul class="chips chips-sm">
+                                <li>MCP</li>
+                                <li>Spring AI</li>
+                                <li>JSqlParser</li>
+                                <li>PostgreSQL</li>
+                            </ul>
+                            <div class="work-links">
+                                <a href="https://github.com/Jagdish1998/sql-guard-mcp" target="_blank"
+                                    rel="noopener noreferrer" aria-label="SQL Guard MCP source on GitHub">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i> Source
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="work reveal">
+                        <div class="work-media">
+                            <img src="images/opt/work-5-800.jpg"
+                                alt="A grid of mailboxes, suggesting email being ingested and sorted"
+                                width="800" height="500" loading="lazy" decoding="async">
+                        </div>
+                        <div class="work-body">
+                            <h3>Job Tracker</h3>
+                            <p>Ingests job-application email from Gmail and classifies it with an LLM that proposes,
+                                never decides. Low-confidence calls wait for review instead of silently
+                                mislabelling.</p>
+                            <ul class="chips chips-sm">
+                                <li>OAuth2</li>
+                                <li>Spring Boot</li>
+                                <li>Kafka</li>
+                                <li>Flyway</li>
+                            </ul>
+                            <div class="work-links">
+                                <a href="https://github.com/Jagdish1998/job-tracker" target="_blank"
+                                    rel="noopener noreferrer" aria-label="Job Tracker source on GitHub">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i> Source
                                 </a>
                             </div>
                         </div>

@@ -196,12 +196,13 @@ assistive technology.
 - Cards are a landscape media area (16:10) over a solid body: title, description,
   chips and links on a real surface, not text on a scrim. Links are always visible,
   not hover-gated, and the live-demo link carries `class="is-demo"` for accent.
-- Image numbers follow card order, so inserting a card means renumbering the rest.
-  All six are 16:10. `work-3` and `work-6` are real captures of deployed sites.
-  `work-1`, `work-2`, `work-4` and `work-5` are licensed Pexels stock (free for
-  commercial use, no attribution required), thematically matched to each project
-  and darkened to sit in the dark card frame. Stock is decoration, not proof:
-  replace each with a screenshot of the running app when you can.
+- Cards are ordered deployed-first: LLM Gateway, RAG Forge and LinkedIn Optimiser
+  (all with a live demo) lead, then the source-only three. Row one is all clickable.
+- All six card images are 16:10 licensed Pexels stock (free for commercial use, no
+  attribution required), thematically matched to each project and darkened to sit in
+  the dark card frame. Stock is decoration, not proof: replace each with a screenshot
+  of the running app when you can. The unused `work-3*` files are the old LinkedIn
+  Optimiser capture, kept in case that card goes back to a real screenshot.
 - linkedin-optimiser and llm-gateway have live demo links (the latter hosted on
   Render's free tier, so it cold-starts after idle). order-saga, sql-guard-mcp and
   job-tracker still need deploying before they can carry one.
