@@ -511,7 +511,7 @@
 
         // Google Apps Script endpoint. Anything posted here lands in the sheet,
         // so treat it as public and never send secrets through it.
-        var scriptURL = 'https://script.google.com/macros/s/AKfycbx2J2WPrY3CFJh2td9vYh7c3IqP7hX9WvoaqC53TtLL7Gq-FczAh58H6rbcBrquQjxk/exec';
+        var scriptURL = 'https://script.google.com/macros/s/AKfycbyM7YHV1sxiap25xD1g0QXES9pVpRyVIzAAZly6ONnU-oHUyNtYKl9Dmf_bEknjBPcuUA/exec';
 
         var fields = [
             { el: form.elements['Name'], err: 'err-name', label: 'name' },
