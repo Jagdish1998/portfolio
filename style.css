@@ -1479,6 +1479,13 @@ section[id] {
     }
 }
 
+.form-note {
+    margin-top: var(--space-3);
+    font-size: var(--step--1);
+    color: var(--text-dim);
+    text-align: center;
+}
+
 .form-status {
     margin-top: var(--space-4);
     min-height: 1.4rem;

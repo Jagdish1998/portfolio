@@ -856,7 +856,9 @@
                             </a>
                         </div>
 
-                        <a href="images/Resume_Jagdish_Sahoo.pdf" download class="btn btn-primary">
+                        <!-- Secondary here, so the form's Send is the one clear primary action
+                             in this section rather than two primary buttons competing. -->
+                        <a href="images/Resume_Jagdish_Sahoo.pdf" download class="btn btn-ghost">
                             <i class="fa-solid fa-download" aria-hidden="true"></i> Download CV
                         </a>
                     </div>
@@ -897,6 +899,11 @@
                                 <span class="btn-label">Send message</span>
                                 <span class="spinner" aria-hidden="true"></span>
                             </button>
+
+                            <!-- Sets expectations before sending: where it goes and how soon a
+                                 reply comes. Lowers the friction of hitting Send. -->
+                            <p class="form-note">Goes straight to my inbox — no newsletter, no spam. I usually reply
+                                within a day.</p>
                         </form>
                         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
                         <!-- Shown only if the send fails, so the form is never a dead end. -->
